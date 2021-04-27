@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   margin: 0;
   padding: 0;
@@ -5,7 +9,13 @@
 }
 
 body {
-  background-color: #333;
+  background: linear-gradient(
+    252.57deg,
+    #262a32 -7.43%,
+    #414164 -5.91%,
+    rgba(38, 42, 50, 0.93) 7.7%,
+    #414164 98.46%
+  );
 }
 
 a {

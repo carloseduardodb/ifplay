@@ -16,7 +16,7 @@ const Teacher = () => {
           <li>
             <span className="text-p-yellow font-bold mr-2">1º</span> Você
             precisa fazer o seu cadastro ou o login clicando{" "}
-            <a href="#" className="font-bold rounded text-p-green">
+            <a href="#" className="font-bold rounded text-p-yellow">
               aqui
             </a>
           </li>
@@ -26,7 +26,8 @@ const Teacher = () => {
           </li>
           <li>
             <span className="text-p-yellow font-bold mr-2">3º</span>
-            Adicione perguntas no final de cada video para fixar o conhecimento.
+            Adicione perguntas no final de cada trilha para fixar o
+            conhecimento.
           </li>
         </ul>
       </div>

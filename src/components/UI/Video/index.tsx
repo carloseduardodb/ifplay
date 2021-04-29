@@ -5,17 +5,20 @@ import { FiArrowDown, FiArrowRight } from "react-icons/fi";
 const Video = () => {
   return (
     <div className="relative m-5">
-      <div className="absolute flex flex-col justify-between items-center rounded-t w-full h-full">
-        <p className="text-white font-bold bg-black bg-opacity-80 py-3 px-4 w-full text-center overflow-ellipsis whitespace-nowrap overflow-hidden">
+      <div className="absolute flex flex-col justify-between items-center rounded-t w-full h-full opacity-0 hover:opacity-100 transition-all duration-1000">
+        <a
+          href="#"
+          className="text-white font-bold bg-black bg-opacity-80 py-3 px-4 w-full text-center overflow-ellipsis whitespace-nowrap overflow-hidden hover:text-p-green"
+        >
           Tailwind CSS Tutorial #15 - Hover Effects
-        </p>
+        </a>
         <a href="" className="absolute top-1/2 transform -translate-y-1/2">
           <FaPlay size={50} className="hover:text-p-green" />
         </a>
         <div className="rounded bg-p-green text-white absolute bottom-0 mb-2 mr-2 w-full shadow-lg">
           <a
             href="#"
-            className="flex items-center text-sm py-1 px-2 my-1 rounded text-white w-full text-center"
+            className="flex items-center text-sm py-1 px-2 my-1 rounded text-white w-full text-center hover:text-black"
           >
             Ver Descrição <FiArrowRight className="ml-2" />
           </a>

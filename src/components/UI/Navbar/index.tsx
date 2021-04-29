@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
-import Search from "../Search";
+import Search from "../../LandingPage/Search";
 
 const Navbar = () => {
   const [menu, openMenu] = useState(false);

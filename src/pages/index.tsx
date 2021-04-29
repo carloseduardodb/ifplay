@@ -2,6 +2,7 @@ import Head from "next/head";
 import Apresentation from "../components/LandingPage/Apresentation";
 import HowItWorks from "../components/LandingPage/HowItWorks";
 import RecentTracks from "../components/LandingPage/RecentTracks";
+import RecentVideos from "../components/LandingPage/RecentVideos";
 import Student from "../components/LandingPage/Student";
 import Teacher from "../components/LandingPage/Teacher";
 import Navbar from "../components/UI/Navbar";
@@ -15,6 +16,7 @@ export default function Home() {
       <Teacher />
       <Student />
       <RecentTracks />
+      <RecentVideos />
     </div>
   );
 }

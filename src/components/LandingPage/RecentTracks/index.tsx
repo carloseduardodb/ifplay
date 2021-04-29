@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
-import Video from "../../UI/Video";
 import "react-multi-carousel/lib/styles.css";
+import Track from "../../UI/Track";
 
 const RecentTracks = () => {
   return (
@@ -12,7 +12,6 @@ const RecentTracks = () => {
         arrows
         autoPlaySpeed={3000}
         centerMode={false}
-        className=""
         containerClass="container"
         dotListClass=""
         draggable
@@ -54,15 +53,12 @@ const RecentTracks = () => {
         slidesToSlide={1}
         swipeable
       >
-        <Video />
-        <Video />
-        <Video />
-        <Video />
-        <Video />
-        <Video />
-        <Video />
-        <Video />
-        <Video />
+        <Track />
+        <Track />
+        <Track />
+        <Track />
+        <Track />
+        <Track />
       </Carousel>
     </>
   );

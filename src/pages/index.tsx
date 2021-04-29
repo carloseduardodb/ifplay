@@ -1,9 +1,9 @@
 import Head from "next/head";
-import Apresentation from "../components/Apresentation";
-import HowItWorks from "../components/HowItWorks";
-import Navbar from "../components/Navbar";
-import Student from "../components/Student";
-import Teacher from "../components/Teacher";
+import Apresentation from "../components/LandingPage/Apresentation";
+import HowItWorks from "../components/LandingPage/HowItWorks";
+import Student from "../components/LandingPage/Student";
+import Teacher from "../components/LandingPage/Teacher";
+import Navbar from "../components/UI/Navbar";
 
 export default function Home() {
   return (

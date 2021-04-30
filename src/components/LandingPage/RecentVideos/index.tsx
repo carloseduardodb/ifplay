@@ -5,7 +5,10 @@ import Video from "../../UI/Video";
 const RecentVideos = () => {
   return (
     <div className="py-5">
-      <h2 className="text-white text-3xl font-bold my-3">Últimos vídeos</h2>
+      <h2 className="text-white text-3xl font-bold my-3">
+        Últimos vídeos{" "}
+        <span className="h-0.5 w-32 bg-p-green absolute mt-5 ml-5"></span>
+      </h2>
       <Carousel
         additionalTransfrom={0}
         arrows

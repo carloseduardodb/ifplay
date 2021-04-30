@@ -3,8 +3,10 @@ import Apresentation from "../components/LandingPage/Apresentation";
 import HowItWorks from "../components/LandingPage/HowItWorks";
 import RecentTracks from "../components/LandingPage/RecentTracks";
 import RecentVideos from "../components/LandingPage/RecentVideos";
+import SeeAllVideos from "../components/LandingPage/SeeAllVideos";
 import Student from "../components/LandingPage/Student";
 import Teacher from "../components/LandingPage/Teacher";
+import Footer from "../components/UI/Footer";
 import Navbar from "../components/UI/Navbar";
 
 export default function Home() {
@@ -17,6 +19,8 @@ export default function Home() {
       <Student />
       <RecentTracks />
       <RecentVideos />
+      <SeeAllVideos />
+      <Footer />
     </div>
   );
 }

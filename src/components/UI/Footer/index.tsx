@@ -16,7 +16,7 @@ const Footer = () => {
           </button>
         </div>
         <hr className="my-10" />
-        <div className="py-10 flex justify-between">
+        <div className="py-10 flex justify-between items-center">
           <ul>
             <li>
               <p className="text-white">Trabalho de conclusão de curso.</p>

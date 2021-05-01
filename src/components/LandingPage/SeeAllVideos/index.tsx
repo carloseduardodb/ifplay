@@ -13,7 +13,7 @@ const SeeAllVideos = () => {
           Não se desespere!
         </h2>
         <span className="text-base text-white">
-          Se nenhum dos videos ou trilhas acima não te agradou você pode ir para
+          Se nenhum dos videos ou trilhas acima te agradaram você pode ir para
           todos os videos.
           <br />
         </span>

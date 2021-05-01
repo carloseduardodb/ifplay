@@ -8,6 +8,7 @@ import Student from "../components/LandingPage/Student";
 import Teacher from "../components/LandingPage/Teacher";
 import Footer from "../components/UI/Footer";
 import Navbar from "../components/UI/Navbar";
+import YouWantCookies from "../components/UI/YouWantCookies";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <RecentVideos />
       <SeeAllVideos />
       <Footer />
+      <YouWantCookies />
     </div>
   );
 }

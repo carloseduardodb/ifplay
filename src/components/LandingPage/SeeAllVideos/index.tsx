@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const SeeAllVideos = () => {
   return (
@@ -17,12 +18,14 @@ const SeeAllVideos = () => {
           todos os videos.
           <br />
         </span>
-        <button
-          className="bg-p-blue px-5 py-3 rounded text-white mt-6"
-          style={{ height: "max-content" }}
-        >
-          Ver todos os videos
-        </button>
+        <Link href="/play-track">
+          <button
+            className="bg-p-blue px-5 py-3 rounded text-white mt-6"
+            style={{ height: "max-content" }}
+          >
+            Ver todos os videos
+          </button>
+        </Link>
       </div>
     </section>
   );

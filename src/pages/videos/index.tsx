@@ -8,7 +8,7 @@ import InfiniteVideos from "../../components/Videos/InfiniteVideos";
 
 const Videos = () => {
   return (
-    <div className="md:px-20 flex flex-col justify-center items-center">
+    <div className="md:px-20 2xl:px-52 flex flex-col justify-center items-center">
       <Navbar /> <PlayTrack /> <InfiniteVideos />
       <div>
         <Footer />

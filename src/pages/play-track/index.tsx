@@ -6,7 +6,7 @@ import PlayerVideo from "../../components/PlayTrack/PlayerVideo";
 
 const PlayTrack = () => {
   return (
-    <div className="md:px-20">
+    <div className="md:px-20 flex flex-col justify-center items-center">
       <Navbar /> <PlayerVideo />
     </div>
   );

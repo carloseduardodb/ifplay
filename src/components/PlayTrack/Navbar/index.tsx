@@ -4,7 +4,7 @@ import { FiChevronLeft, FiSearch } from "react-icons/fi";
 
 const Navbar = () => {
   return (
-    <nav className="flex justify-center items-center">
+    <nav className="flex justify-center items-center w-full">
       <div className="container flex justify-between items-center">
         <div className="text-white flex w-8/12 py-3 px-10 my-5 justify-start row items-center bg-p-black-dark rounded-lg p-1">
           <FiSearch

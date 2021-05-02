@@ -3,8 +3,11 @@ import ListVideos from "./../ListVideos";
 
 const PlayerVideo = () => {
   return (
-    <section className="container my-5 flex">
-      <div style={{ height: "85vh" }} className="w-8/12">
+    <section
+      style={{ height: "85vh" }}
+      className="container my-5 flex justify-between"
+    >
+      <div className="w-8/12">
         <iframe
           width="100%"
           height="100%"

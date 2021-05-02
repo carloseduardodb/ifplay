@@ -18,7 +18,7 @@ const SeeAllVideos = () => {
           todos os videos.
           <br />
         </span>
-        <Link href="/play-track">
+        <Link href="/videos">
           <button
             className="bg-p-blue px-5 py-3 rounded text-white mt-6"
             style={{ height: "max-content" }}

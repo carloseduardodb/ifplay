@@ -3343,6 +3343,11 @@ supports-color@^8.0.0:
   dependencies:
     has-flag "^4.0.0"
 
+survey-react@^1.8.46:
+  version "1.8.46"
+  resolved "https://registry.yarnpkg.com/survey-react/-/survey-react-1.8.46.tgz#075a764e7a7378656154aa1f0c5c3817d77e24ba"
+  integrity sha512-vLJFOPNve/pWdw0DyKchJvgk2Iw0czoe/Xz1LkgRSSWKW7cQKw0m60h9yKUsitaknk8SnoN9wCqJMKgjzdMGtA==
+
 tailwindcss@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-2.1.2.tgz#29402bf73a445faedd03df6d3b177e7b52b7c4a1"

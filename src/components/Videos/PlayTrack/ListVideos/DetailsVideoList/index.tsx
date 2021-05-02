@@ -1,10 +1,10 @@
 import React from "react";
 
 interface detailsVideo {
-  selected: Boolean;
+  selected?: Boolean;
 }
 
-const DetailsVideoList: React.FC<detailsVideo> = ({ selected }) => {
+const DetailsVideoList: React.FC<detailsVideo> = ({ selected = false }) => {
   return (
     <li>
       <a

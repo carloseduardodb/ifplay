@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import { FaPlay } from "react-icons/fa";
 import { FiArrowRight } from "react-icons/fi";
 
-const Video = () => {
+interface videoProperties {
+  effects?: Boolean;
+}
+
+const Video: React.FC<videoProperties> = ({ effects = true }) => {
   const [description, isDescription] = useState(false);
 
   function handleDescriptionView() {
@@ -11,7 +15,11 @@ const Video = () => {
 
   return (
     <div className="relative m-5">
-      <div className="absolute flex flex-col justify-between items-center rounded-t w-full h-full opacity-0 hover:opacity-100 transition-all duration-1000">
+      <div
+        className={`absolute flex flex-col justify-between items-center rounded-t w-full h-full ${
+          effects && "opacity-0"
+        } hover:opacity-100 transition-all duration-1000`}
+      >
         <a
           href="#"
           className={`text-white font-bold bg-black bg-opacity-80 py-3 px-4 w-full text-center overflow-ellipsis whitespace-nowrap overflow-hidden hover:text-p-green ${

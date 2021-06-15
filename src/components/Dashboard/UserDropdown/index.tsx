@@ -1,7 +1,7 @@
 import React from "react";
 import { createPopper } from "@popperjs/core";
 import type { StrictModifiers } from "@popperjs/core";
-import { FiUser } from "react-icons/fi";
+import { FiUser, FiLogOut } from "react-icons/fi";
 
 const UserDropdown = () => {
   // dropdown props
@@ -50,39 +50,40 @@ const UserDropdown = () => {
         <a
           href="#pablo"
           className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent hover:text-p-green-dark"
           }
           onClick={(e) => e.preventDefault()}
         >
-          Action
+          Atualizar perfil
         </a>
         <a
           href="#pablo"
           className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent hover:text-p-green-dark"
           }
           onClick={(e) => e.preventDefault()}
         >
-          Another action
+          Sugerir funcionalidade
         </a>
         <a
           href="#pablo"
           className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent hover:text-p-green-dark"
           }
           onClick={(e) => e.preventDefault()}
         >
-          Something else here
+          Configurações
         </a>
         <div className="h-0 my-2 border border-solid border-blueGray-100" />
         <a
           href="#pablo"
           className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+            "text-sm py-2 px-4 font-normal w-full whitespace-nowrap bg-transparent text-red-500 flex items-center gap-x-2 hover:text-red-900"
           }
           onClick={(e) => e.preventDefault()}
         >
-          Seprated link
+          <FiLogOut />
+          <li>Sair</li>
         </a>
       </div>
     </>

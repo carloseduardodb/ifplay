@@ -13,6 +13,9 @@ import YouWantCookies from "../components/UI/YouWantCookies";
 export default function Home() {
   return (
     <div className="md:px-20">
+      <Head>
+        <title>IF (PLAY)</title>
+      </Head>
       <Navbar />
       <Apresentation />
       <HowItWorks />

@@ -3,12 +3,16 @@ import HeaderStats from "../../components/Dashboard/HeaderStats";
 import Navbar from "../../components/Dashboard/Navbar";
 import Sidebar from "../../components/Dashboard/Sidebar";
 import Footer from "../../components/Dashboard/Footer";
+import Head from "next/head";
 
 // components
 
 export default function Admin({ children }) {
   return (
     <>
+      <Head>
+        <title>IF (PLAY) - Dashboard</title>
+      </Head>
       <Sidebar />
       <div className="relative md:ml-64 flex flex-col min-h-screen justify-between">
         <div className="flex flex-col">

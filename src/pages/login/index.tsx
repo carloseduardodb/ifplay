@@ -46,6 +46,14 @@ const Login = () => {
                 <div className="relative z-10 text-left py-5">
                   <Form ref={formRef} onSubmit={handleSubmit}>
                     <div className="mt-4">
+                      <Link href="/">
+                        <img
+                          style={{ minWidth: "100px" }}
+                          className="bg-cover cursor-pointer w-28 mb-5 xs:w-36 min-w-0"
+                          src="./logo.svg"
+                          alt="if(play)"
+                        />
+                      </Link>
                       <label
                         className="block text-base font-medium 
                       leading-relaxed text-white"

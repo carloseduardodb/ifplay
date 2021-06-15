@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { FiSearch } from "react-icons/fi";
 import Search from "../../LandingPage/Search";
 
 const Navbar = () => {
@@ -22,7 +21,7 @@ const Navbar = () => {
               <a href="#">
                 <img
                   style={{ minWidth: "100px" }}
-                  className="bg-cover w-48 xs:w-36 min-w-0"
+                  className="bg-cover w-32 xs:w-36 min-w-0"
                   src="./logo.svg"
                   alt="if(play)"
                 />

@@ -51,8 +51,8 @@ export default function Sidebar() {
               px-0"
             >
               <img
-                style={{ minWidth: "100px" }}
-                className="bg-cover w-28 xs:w-36 min-w-0"
+                style={{ minWidth: "50px" }}
+                className="bg-cover w-32 xs:w-24 min-w-0"
                 src="./logo.svg"
                 alt="if(play)"
               />
@@ -111,7 +111,7 @@ export default function Sidebar() {
                 <input
                   type="text"
                   placeholder="Search"
-                  className="border-0 px-3 py-2 h-12 border border-solid  
+                  className="border-0 px-3 py-2 h-12 border-solid  
                   border-blueGray-500 placeholder-blueGray-300 text-blueGray-600 
                   bg-white rounded text-base leading-snug shadow-none outline-none 
                   focus:outline-none w-full font-normal"

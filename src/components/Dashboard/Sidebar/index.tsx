@@ -53,7 +53,7 @@ export default function Sidebar() {
               <img
                 style={{ minWidth: "50px" }}
                 className="bg-cover w-32 xs:w-24 min-w-0"
-                src="./logo.svg"
+                src="/logo.svg"
                 alt="if(play)"
               />
             </a>
@@ -137,19 +137,12 @@ export default function Sidebar() {
                     href="#pablo"
                     className={
                       "text-xs uppercase py-3 px-4 font-bold flex flex-row" +
-                      (router.pathname.indexOf("/dashboard") !== -1
+                      (router.pathname === "/dashboard"
                         ? "text-light text-white bg-p-green rounded hover:text-light"
                         : "text-light text-white hover:text-blueGray-500")
                     }
                   >
-                    <i
-                      className={
-                        "fas fa-tv mr-2 text-sm " +
-                        (router.pathname.indexOf("/admin/dashboard") !== -1
-                          ? "opacity-75"
-                          : "text-blueGray-300")
-                      }
-                    >
+                    <i className={"fas fa-tv mr-2 text-sm"}>
                       <FaTachometerAlt />
                     </i>{" "}
                     <span>Dashboard</span>
@@ -158,13 +151,12 @@ export default function Sidebar() {
               </li>
 
               <li className="items-center mt-2">
-                <Link href="/dashboard">
+                <Link href="/dashboard/playlists">
                   <a
-                    href="#pablo"
+                    href="#"
                     className={
                       "text-xs uppercase py-3 px-4 font-bold flex flex-row" +
-                      (router.pathname.indexOf("/dashboard/questionaries") !==
-                      -1
+                      (router.pathname.indexOf("/dashboard/playlists") !== -1
                         ? "text-light text-white bg-p-green rounded hover:text-light"
                         : "text-light text-white hover:text-p-green")
                     }
@@ -172,7 +164,9 @@ export default function Sidebar() {
                     <i
                       className={
                         "fas fa-tv mr-2 text-sm " +
-                        (router.pathname.indexOf("/admin/dashboard") !== -1
+                        (router.pathname.indexOf(
+                          "/admin/dashboard/playlists"
+                        ) !== -1
                           ? "opacity-75"
                           : "text-blueGray-300")
                       }
@@ -301,9 +295,7 @@ export default function Sidebar() {
               </li>
             </ul>
 
-            {/* Divider */}
             <hr className="my-4 md:min-w-full" />
-            {/* Heading */}
           </div>
         </div>
       </nav>

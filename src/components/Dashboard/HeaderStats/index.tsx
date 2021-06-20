@@ -8,8 +8,8 @@ export default function HeaderStats() {
   return (
     <>
       {/* Header */}
-      <div className="relative bg-p-black-dark md:pt-32 pb-16 xs:pb-1 pt-12">
-        <div className="px-4 md:px-10 mx-auto w-full">
+      <div className="relative bg-p-black-dark md:pt-24 pb-16 xs:pb-1 pt-8">
+        <div className="px-4 md:px-12 mx-auto w-full">
           <div>
             {/* Card stats */}
             <div className="flex flex-wrap">

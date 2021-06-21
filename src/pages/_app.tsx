@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Sidebar from "../components/Dashboard/Sidebar";
 import Navbar from "../components/Dashboard/Navbar";
-import HeaderStats from "../components/Dashboard/HeaderStats";
 import FooterAdmin from "../components/Dashboard/Footer";
 
 function MyApp({ Component, pageProps }) {
@@ -28,7 +27,7 @@ function MyApp({ Component, pageProps }) {
     );
   }
   //landing page and login and logout page display
-  else if (router.pathname === "/") {
+  else if (router.pathname !== "/dashboard") {
     return (
       <div>
         <Component {...pageProps} />

@@ -1,8 +1,9 @@
+import Link from "next/link";
 import React from "react";
 
 const Teacher = () => {
   return (
-    <section className="h-screen flex flex-col items-center justify-center">
+    <section className="h-screen flex flex-col items-center justify-center" id="teacher">
       <h1 className="my-5 text-3xl text-white font-bold mb-10">
         Falta apenas um passo entre você e um novo mundo para seus pupilos!
       </h1>
@@ -16,9 +17,11 @@ const Teacher = () => {
           <li>
             <span className="text-p-yellow font-bold mr-2">1º</span> Você
             precisa fazer o seu cadastro ou o login clicando{" "}
+            <Link href="/login">
             <a href="#" className="font-bold rounded text-p-yellow">
               aqui
             </a>
+            </Link>
           </li>
           <li className="my-5">
             <span className="text-p-yellow font-bold mr-2">2º</span> Você poderá

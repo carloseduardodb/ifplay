@@ -1,8 +1,9 @@
+import Link from "next/link";
 import React from "react";
 
 const Student = () => {
   return (
-    <section className="h-screen">
+    <section className="h-screen" id="student">
       <h2 className="text-3xl font-bold text-white text-center my-20">
         Comece a estudar agora!
       </h2>
@@ -25,9 +26,11 @@ const Student = () => {
             <span className="text-p-green font-bold mr-2">4º</span> Volte a
             assistir de onde parou quando voltar.
           </li>
+          <Link href="videos">
           <button className="bg-p-green mt-10 rounded px-5 py-3 hover:bg-opacity-80 transition-all">
             Quero começar a estudar
           </button>
+          </Link>
         </ul>
       </div>
     </section>

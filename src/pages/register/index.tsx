@@ -3,12 +3,16 @@ import InputText from "../../components/UI/InputText";
 import { Form } from "@unform/web";
 import { FormHandles } from "@unform/core";
 import Link from "next/link";
+import Head from "next/head";
 
 const Register = () => {
   const formRef = useRef<FormHandles>(null);
   function handleSubmit() {}
   return (
     <div>
+      <Head>
+        <title>IF (PLAY) - Register</title>
+      </Head>
       <section className="flex flex-col items-center h-screen md:flex-row">
         <div className="container mx-auto">
           <div className="flex justify-center px-2 py-6 ">

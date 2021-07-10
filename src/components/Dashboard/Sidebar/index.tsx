@@ -43,9 +43,8 @@ export default function Sidebar() {
             <FaBars />
           </button>
           {/* Brand */}
-          <Link href="/">
+          <Link href="/dashboard">
             <a
-              href="#pablo"
               className="md:block text-left md:pb-2 text-blueGray-600 mr-0 
               inline-block whitespace-nowrap text-sm uppercase font-bold p-4 
               px-0"
@@ -54,7 +53,7 @@ export default function Sidebar() {
                 style={{ minWidth: "50px" }}
                 className="bg-cover w-32 xs:w-24 min-w-0"
                 src="/logo.svg"
-                alt="if(play)"
+                alt="IF(PLAY)"
               />
             </a>
           </Link>
@@ -83,7 +82,7 @@ export default function Sidebar() {
                 <div className="w-6/12">
                   <Link href="/">
                     <a
-                      href="#pablo"
+                      href="#"
                       className="md:block text-left md:pb-2 text-white 
                       mr-0 inline-block whitespace-nowrap text-sm uppercase 
                       font-bold p-4 px-0"
@@ -134,7 +133,7 @@ export default function Sidebar() {
               <li className="items-center">
                 <Link href="/dashboard">
                   <a
-                    href="#pablo"
+                    href="#"
                     className={
                       "text-xs uppercase py-3 px-4 font-bold flex flex-row" +
                       (router.pathname === "/dashboard"
@@ -164,9 +163,7 @@ export default function Sidebar() {
                     <i
                       className={
                         "fas fa-tv mr-2 text-sm " +
-                        (router.pathname.indexOf(
-                          "/admin/dashboard/playlists"
-                        ) !== -1
+                        (router.pathname.indexOf("/dashboard/playlists") !== -1
                           ? "opacity-75"
                           : "text-blueGray-300")
                       }
@@ -176,12 +173,48 @@ export default function Sidebar() {
                     <span>Playlists</span>
                   </a>
                 </Link>
+                {router.pathname.indexOf("/dashboard/playlists") !== -1 ? (
+                  <ul className="flex flex-col gap-y-3 mt-3 font-light text-sm">
+                    <li>
+                      <Link href="/dashboard/playlists/specific">
+                        <a
+                          href="#"
+                          className="text-white ml-8 hover:text-p-green"
+                        >
+                          Geometria analitica
+                        </a>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/dashboard/specific">
+                        <a
+                          href="#"
+                          className="text-white ml-8 hover:text-p-green"
+                        >
+                          Computação quantica
+                        </a>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/dashboard/specific">
+                        <a
+                          href="#"
+                          className="text-white ml-8 hover:text-p-green"
+                        >
+                          Behaviorismo
+                        </a>
+                      </Link>
+                    </li>
+                  </ul>
+                ) : (
+                  ""
+                )}
               </li>
 
               <li className="items-center mt-2">
                 <Link href="/dashboard">
                   <a
-                    href="#pablo"
+                    href="#"
                     className={
                       "text-xs uppercase py-3 px-4 font-bold flex flex-row" +
                       (router.pathname.indexOf("/dashboard/questionaries") !==
@@ -218,7 +251,7 @@ export default function Sidebar() {
               <li className="items-center mt-2">
                 <Link href="/dashboard">
                   <a
-                    href="#pablo"
+                    href="#"
                     className={
                       "text-xs uppercase py-3 px-4 font-bold flex flex-row" +
                       (router.pathname.indexOf("/dashboard/questionaries") !==
@@ -244,7 +277,7 @@ export default function Sidebar() {
               <li className="items-center mt-2">
                 <Link href="/dashboard">
                   <a
-                    href="#pablo"
+                    href="#"
                     className={
                       "text-xs uppercase py-3 px-4 font-bold flex flex-row" +
                       (router.pathname.indexOf("/dashboard/questionaries") !==
@@ -270,7 +303,7 @@ export default function Sidebar() {
               <li className="items-center mt-2">
                 <Link href="/dashboard">
                   <a
-                    href="#pablo"
+                    href="#"
                     className={
                       "text-xs uppercase py-3 px-4 font-bold flex flex-row" +
                       (router.pathname.indexOf("/dashboard/questionaries") !==

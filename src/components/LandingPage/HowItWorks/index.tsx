@@ -22,14 +22,14 @@ const HowItWorks = () => {
         alt="duas pessoas estudando"
       />
       <div className="flex flex-row justify-between md:w-5/12 gap-x-10">
-        <button className="bg-p-green py-5 px-7 text-white rounded-lg flex items-center hover:bg-opacity-80 transition-all">
+        <a href="#teacher" className="bg-p-green py-5 px-7 text-white rounded-lg flex items-center hover:bg-opacity-80 transition-all">
           <GiTeacher className="mr-2" color="white" />
           Sou um professor
-        </button>
-        <button className="bg-p-blue text-white py-5 px-7 rounded-lg flex items-center hover:bg-opacity-80 transition-all">
+        </a>
+        <a href="#student" className="bg-p-blue text-white py-5 px-7 rounded-lg flex items-center hover:bg-opacity-80 transition-all">
           <FaUserGraduate className="mr-2" />
           Sou um aluno
-        </button>
+        </a>
       </div>
     </section>
   );

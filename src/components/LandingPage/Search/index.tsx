@@ -3,10 +3,10 @@ import { FiSearch } from "react-icons/fi";
 
 const Search = () => {
   return (
-    <div className="text-white flex items-center bg-p-black-dark rounded-lg p-1">
-      <FiSearch className="text-p-green bg-transparent mx-2" size={30} />
+    <div className="text-white flex items-center bg-p-black-dark rounded-lg p-1 border-2 focus:shadow-2xl focus:border-2 border-p-green">
+      <FiSearch className="text-p-green bg-transparent mx-2" size={20} />
       <input
-        className="py-1 rounded-r-lg font-normal text-base bg-transparent outline-none focus:border-transparent"
+        className="py-1 rounded-r-lg font-normal text-sm bg-transparent outline-none border-transparent border-b-2 border-t-2 focus:border-gray-700 transition-all delay-150"
         type="text"
         placeholder="Pesquisar"
       />

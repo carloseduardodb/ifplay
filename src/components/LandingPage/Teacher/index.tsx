@@ -3,11 +3,11 @@ import React from "react";
 
 const Teacher = () => {
   return (
-    <section className="h-screen flex flex-col items-center justify-center" id="teacher">
+    <section className="flex flex-col items-center justify-center pt-20" id="teacher">
       <h1 className="my-5 text-3xl text-white font-bold mb-10">
         Falta apenas um passo entre você e um novo mundo para seus pupilos!
       </h1>
-      <div className="flex justify-around items-center">
+      <div className="flex flex-col md:flex-row justify-around items-center">
         <img
           src="./iteacher.svg"
           alt="Uma pessoa assistindo uma aula online"
@@ -22,6 +22,7 @@ const Teacher = () => {
               aqui
             </a>
             </Link>
+            .
           </li>
           <li className="my-5">
             <span className="text-p-yellow font-bold mr-2">2º</span> Você poderá

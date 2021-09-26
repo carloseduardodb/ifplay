@@ -3,11 +3,11 @@ import React from "react";
 
 const Student = () => {
   return (
-    <section className="h-screen" id="student">
+    <section className="mb-10 md:mb-0" id="student">
       <h2 className="text-3xl font-bold text-white text-center my-20">
         Comece a estudar agora!
       </h2>
-      <div className="flex flex-row-reverse justify-around items-center">
+      <div className="flex flex-col md:flex-row-reverse justify-around items-center">
         <img src="./studentquiz.svg" alt="" className="w-6/12" />
         <ul className="text-white text-lg">
           <li>
@@ -27,9 +27,11 @@ const Student = () => {
             assistir de onde parou quando voltar.
           </li>
           <Link href="videos">
-          <button className="bg-p-green mt-10 rounded px-5 py-3 hover:bg-opacity-80 transition-all">
-            Quero começar a estudar
-          </button>
+            <div className="text-center">
+              <button className="bg-p-green mt-10 rounded px-5 py-3 hover:bg-opacity-80 transition-all">
+                Quero começar a estudar
+              </button>
+            </div>
           </Link>
         </ul>
       </div>

@@ -1,11 +1,10 @@
 import React from "react";
 import { FiArrowDown } from "react-icons/fi";
 
-const Apresentation = () => {
+const Presentation = () => {
   return (
     <div
-      style={{ height: "80vh" }}
-      className="text-center flex flex-col items-center justify-around relative top-0"
+      className="text-center flex flex-col items-center justify-around relative top-0 gap-y-56 my-20"
     >
       <img
         style={{ zIndex: -1 }}
@@ -14,12 +13,12 @@ const Apresentation = () => {
         width="70%"
         alt="Pessoa estudando"
       />
-      <h2 className="text-5xl text-white font-bold">
+      <h2 className="text-4xl 2xl:5xl text-white font-bold">
         Estude quando e onde quiser!
       </h2>
       <a
         href="#HowItWorks"
-        className="bg-p-green text-white p-3 rounded-md flex items-center shadow-md hover:bg-opacity-80 transition-all"
+        className="bg-p-green text-white p-3 rounded-md flex items-center shadow-md hover:bg-opacity-80 transition-all animate-bounce"
       >
         Quero Saber Mais
         <FiArrowDown size={25} className="ml-1" />
@@ -28,4 +27,4 @@ const Apresentation = () => {
   );
 };
 
-export default Apresentation;
+export default Presentation;

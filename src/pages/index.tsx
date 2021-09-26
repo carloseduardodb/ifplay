@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Apresentation from "../components/LandingPage/Apresentation";
+import Presentation from "../components/LandingPage/Presentation";
 import HowItWorks from "../components/LandingPage/HowItWorks";
 import RecentTracks from "../components/LandingPage/RecentTracks";
 import RecentVideos from "../components/LandingPage/RecentVideos";
@@ -12,12 +12,13 @@ import YouWantCookies from "../components/UI/YouWantCookies";
 
 export default function Home() {
   return (
-    <div className="md:px-20">
+    <div className="flex justify-center">
+      <div className="px-10">
       <Head>
         <title>IF (PLAY)</title>
       </Head>
       <Navbar />
-      <Apresentation />
+      <Presentation />
       <HowItWorks />
       <Teacher />
       <Student />
@@ -26,6 +27,7 @@ export default function Home() {
       <SeeAllVideos />
       <Footer />
       <YouWantCookies />
+      </div>
     </div>
   );
 }

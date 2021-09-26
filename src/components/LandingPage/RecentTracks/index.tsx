@@ -12,10 +12,11 @@ const RecentTracks = () => {
       </h2>
       <Carousel
         additionalTransfrom={0}
+        className="w-full"
         arrows
         autoPlaySpeed={3000}
         centerMode={false}
-        containerClass="container"
+        containerClass="container mx-auto"
         dotListClass=""
         draggable
         focusOnSelect={false}

@@ -2,9 +2,9 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <section className="absolute w-full left-0 bg-p-green">
-      <section className="rounded-tl-full bg-p-black-dark w-full left-0 px-52 h-auto pt-52">
-        <div className="flex flex-row justify-between">
+    <section className="md:absolute w-full md:left-0 md:bg-p-green">
+      <section className="md:rounded-tl-full bg-p-black-dark w-full left-0 px-11 md:px-52 h-auto pt-20 md:pt-52">
+        <div className="flex flex-col md:flex-row justify-between gap-y-10 md:gap-y-0">
           <h2 className="text-3xl text-white text-center">
             Investir em conhecimento rende <br /> sempre os melhores juros!
           </h2>
@@ -16,7 +16,7 @@ const Footer = () => {
           </button>
         </div>
         <hr className="my-10" />
-        <div className="py-10 flex justify-between items-center">
+        <div className="py-5 gap-y-5 md:py-10 flex flex-col md:flex-row justify-between items-center">
           <ul>
             <li>
               <p className="text-white">Trabalho de conclusão de curso.</p>
@@ -38,9 +38,8 @@ const Footer = () => {
             </li>
           </ul>
           <img
-            className="bg-p-yellow-light p-3 rounded"
+            className="bg-p-yellow-light p-3 rounded w-32"
             src="./ifsuldeminaslogo.png"
-            width="15%"
             alt="ifsuldeminas"
           />
         </div>

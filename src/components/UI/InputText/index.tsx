@@ -33,15 +33,22 @@ const InputText: React.FC<PropsInputText> = ({
   }, [fieldName, registerField]);
 
   return (
-    <input
-      ref={inputRef}
-      defaultValue={defaultValue}
-      type={type}
-      id={name}
-      placeholder={placeholder}
-      className={error ? "has-error" : ""}
-      {...rest}
-    />
+    <div>
+      <input
+        ref={inputRef}
+        defaultValue={defaultValue}
+        type={type}
+        id={name}
+        placeholder={placeholder}
+        className={error ? "has-error" : ""}
+        {...rest}
+      />
+      {error && (
+        <p className="mt-1 text-xs italic text-white opacity-60">
+          {`${error}`}
+        </p>
+      )}
+    </div>
   );
 };
 

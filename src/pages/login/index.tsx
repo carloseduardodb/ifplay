@@ -2,12 +2,52 @@ import React, { useRef } from "react";
 import InputText from "../../components/UI/InputText";
 import { Form } from "@unform/web";
 import { FormHandles } from "@unform/core";
+import * as Yup from 'yup';
 import Link from "next/link";
 import Head from "next/head";
+import api from "../../services/api";
+import getValidationsErrors from "../../utils/getValidationsErrors";
+
+interface LoginData{
+  email: string;
+  password: string;
+}
 
 const Login = () => {
   const formRef = useRef<FormHandles>(null);
-  function handleSubmit() {}
+  
+  async function login(data: LoginData){
+    const status = await api.post("teacher/login", data).then((data) => {
+      console.log(data);
+      return true;
+    }).catch((err: Error) => {
+      alert("Email já cadastrado no sistema!");
+      return false;
+    })
+    return status;
+  }
+
+  async function handleSubmit(data: LoginData, {reset}) {
+    try{
+      const schema = Yup.object().shape({
+        email: Yup.string().email("É necessário um email válido!").required("Este campo não pode ficar vazio!"),
+        password: Yup.string().required("Por Favor Adicione Sua Senha").matches(
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~])[A-Za-z\d!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]{8,}$/,
+          "Deve conter 8 caracteres, uma maiúscula, uma minúscula, um número e um caracteres especial"
+        )
+      });
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+      const status = await login(data);
+      status && reset();
+    }catch(err){
+      if(err instanceof Yup.ValidationError){
+        const errors = getValidationsErrors(err);
+        formRef.current?.setErrors(errors);
+      }
+    }
+  }
   return (
     <div>
       <Head>
@@ -66,8 +106,9 @@ const Login = () => {
                       </label>
                       <InputText
                         type="email"
-                        name="05"
-                        id=""
+                        name="email"
+                        autoComplete="true"
+                        id="email"
                         placeholder="Seu Email"
                         className="w-full focus:scale-105 px-4 py-2 mt-2 text-base transition 
                         duration-500 ease-in-out transform bg-gray-100 
@@ -86,7 +127,7 @@ const Login = () => {
                           Senha
                         </label>
                         <InputText
-                          name="06"
+                          name="password"
                           className="block focus:scale-105 w-full px-4 py-2 mt-2 text-base 
                           text-black transition duration-500 ease-in-out 
                           transform bg-gray-100 border-transparent rounded-lg 
@@ -95,11 +136,9 @@ const Login = () => {
                           focus:border-gray-500"
                           id="password"
                           type="text"
+                          autoComplete="true"
                           placeholder="Sua Senha"
                         />
-                        <p className="mt-1 text-xs italic text-white opacity-60">
-                          Por favor preencha este campo
-                        </p>
                       </div>
                     </div>
                     <button

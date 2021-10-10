@@ -4,13 +4,14 @@
   "private": true,
   "license": "Creative Commons",
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
     "commit": "git-cz"
   },
   "dependencies": {
     "@popperjs/core": "^2.9.2",
+    "@tanem/react-nprogress": "^3.0.80",
     "@types/react-custom-scrollbars": "^4.0.7",
     "@unform/core": "^2.1.6",
     "@unform/web": "^2.1.6",
@@ -23,7 +24,8 @@
     "react-multi-carousel": "^2.6.2",
     "sass": "^1.32.11",
     "survey-react": "^1.8.46",
-    "tailwind-scrollbar": "^1.3.1"
+    "tailwind-scrollbar": "^1.3.1",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@types/node": "^15.0.0",

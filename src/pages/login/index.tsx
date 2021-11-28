@@ -2,47 +2,54 @@ import React, { useRef } from "react";
 import InputText from "../../components/UI/InputText";
 import { Form } from "@unform/web";
 import { FormHandles } from "@unform/core";
-import * as Yup from 'yup';
+import * as Yup from "yup";
 import Link from "next/link";
 import Head from "next/head";
-import api from "../../services/api";
 import getValidationsErrors from "../../utils/getValidationsErrors";
-
-interface LoginData{
+import { useAuth } from "../../hooks/useAuth";
+import Router from "next/router";
+import { useEffect } from "react";
+interface LoginData {
   email: string;
   password: string;
 }
 
 const Login = () => {
   const formRef = useRef<FormHandles>(null);
-  
-  async function login(data: LoginData){
-    const status = await api.post("teacher/login", data).then((data) => {
-      console.log(data);
-      return true;
-    }).catch((err: Error) => {
-      alert("Email já cadastrado no sistema!");
-      return false;
-    })
-    return status;
+  const { signIn, teacher } = useAuth();
+
+  useEffect(() => {
+    if (teacher) {
+      Router.push("/dashboard");
+    }
+  }, []);
+
+  async function login(data: LoginData) {
+    await signIn(data);
+    alert("Sucesso ao fazer login");
+    Router.push("/dashboard");
   }
 
-  async function handleSubmit(data: LoginData, {reset}) {
-    try{
+  async function handleSubmit(data: LoginData, { reset }) {
+    try {
       const schema = Yup.object().shape({
-        email: Yup.string().email("É necessário um email válido!").required("Este campo não pode ficar vazio!"),
-        password: Yup.string().required("Por Favor Adicione Sua Senha").matches(
-          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~])[A-Za-z\d!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]{8,}$/,
-          "Deve conter 8 caracteres, uma maiúscula, uma minúscula, um número e um caracteres especial"
-        )
+        email: Yup.string()
+          .email("É necessário um email válido!")
+          .required("Este campo não pode ficar vazio!"),
+        password: Yup.string()
+          .required("Por Favor Adicione Sua Senha")
+          .matches(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~])[A-Za-z\d!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]{8,}$/,
+            "Deve conter 8 caracteres, uma maiúscula, uma minúscula, um número e um caracteres especial"
+          ),
       });
       await schema.validate(data, {
         abortEarly: false,
       });
       const status = await login(data);
       status && reset();
-    }catch(err){
-      if(err instanceof Yup.ValidationError){
+    } catch (err) {
+      if (err instanceof Yup.ValidationError) {
         const errors = getValidationsErrors(err);
         formRef.current?.setErrors(errors);
       }
@@ -135,7 +142,7 @@ const Login = () => {
                           ring-offset-current ring-offset-2 ext-black 
                           focus:border-gray-500"
                           id="password"
-                          type="text"
+                          type="password"
                           autoComplete="true"
                           placeholder="Sua Senha"
                         />

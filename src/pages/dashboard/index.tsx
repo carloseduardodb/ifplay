@@ -1,9 +1,6 @@
-import React from "react";
-import { FaChevronDown } from "react-icons/fa";
-import CardStats from "../../components/Dashboard/CardStats";
+import React, { useEffect } from "react";
 import CardTable from "../../components/Dashboard/CardTable";
 import HeaderStats from "../../components/Dashboard/HeaderStats";
-import PlaylistCard from "../../components/Dashboard/PlaylistCard";
 
 export default function Dashboard() {
   return (

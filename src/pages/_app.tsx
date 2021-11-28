@@ -5,35 +5,44 @@ import Head from "next/head";
 import Sidebar from "../components/Dashboard/Sidebar";
 import Navbar from "../components/Dashboard/Navbar";
 import FooterAdmin from "../components/Dashboard/Footer";
+import { AuthProvider } from "../contexts/AuthContext";
+import { useEffect } from "react";
+import Router from "next/router";
+import { useAuth } from "../hooks/useAuth";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
+  const { teacher } = useAuth();
+
+  useEffect(() => {
+    console.log(router.pathname);
+    if (router.pathname.includes("/dashboard") && !teacher) {
+      Router.push("/login");
+    }
+  }, []);
+
   //display dashboard
-  if (router.pathname.indexOf("/dashboard") !== -1) {
-    return (
-      <div>
-        <Head>
-          <title>IF (PLAY) - Dashboard</title>
-        </Head>
-        <Sidebar />
-        <div className="relative md:ml-64 flex flex-col min-h-screen justify-between">
-          <div className="flex flex-col">
-            <Navbar />
-            <Component {...pageProps} />
-            <FooterAdmin />
+  return (
+    <AuthProvider>
+      {router.pathname.indexOf("/dashboard") !== -1 ? (
+        <>
+          <Head>
+            <title>IF (PLAY) - Dashboard</title>
+          </Head>
+          <Sidebar />
+          <div className="relative md:ml-64 flex flex-col min-h-screen justify-between">
+            <div className="flex flex-col">
+              <Navbar />
+              <Component {...pageProps} />
+              <FooterAdmin />
+            </div>
           </div>
-        </div>
-      </div>
-    );
-  }
-  //landing page and login and logout page display
-  else if (router.pathname !== "/dashboard") {
-    return (
-      <div>
+        </>
+      ) : (
         <Component {...pageProps} />
-      </div>
-    );
-  }
+      )}
+    </AuthProvider>
+  );
 }
 
 export default MyApp;

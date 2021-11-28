@@ -2,11 +2,13 @@ import React, { FormEventHandler, useRef } from "react";
 import InputText from "../../components/UI/InputText";
 import { Form } from "@unform/web";
 import { FormHandles } from "@unform/core";
-import getValidationsErrors from '../../utils/getValidationsErrors';
-import * as Yup from 'yup';
+import getValidationsErrors from "../../utils/getValidationsErrors";
+import * as Yup from "yup";
 import Link from "next/link";
 import Head from "next/head";
 import api from "../../services/api";
+import { useAuth } from "../../hooks/useAuth";
+import Router from "next/router";
 
 interface RegisterData {
   name: string;
@@ -17,52 +19,67 @@ interface RegisterData {
 
 const Register = () => {
   const formRef = useRef<FormHandles>(null);
-
-  async function sendData(data: RegisterData){
-    const status = await api.post("teacher/register", data).then(() => {
-      alert("Sucesso ao realizar seu cadastro!");
-      return true;
-    }).catch((err: Error) => {
-      alert("Email já cadastrado no sistema!");
-      return false;
-    })
+  const { teacher } = useAuth();
+  if (teacher) {
+    Router.push("/dashboard");
+  }
+  async function sendData(data: RegisterData) {
+    const status = await api
+      .post("teacher/register", data)
+      .then(() => {
+        alert("Sucesso ao realizar seu cadastro!");
+        return true;
+      })
+      .catch((err: Error) => {
+        alert("Email já cadastrado no sistema!");
+        return false;
+      });
     return status;
   }
 
   function equalTo(ref, msg) {
     return this.test({
-      name: 'equalTo',
+      name: "equalTo",
       exclusive: false,
-      message: msg || '${path} must be the same as ${reference}',
+      message: msg || "${path} must be the same as ${reference}",
       params: {
-        reference: ref.path
+        reference: ref.path,
       },
-      test: function(value) {
-        return value === this.resolve(ref) 
-      }
-    })
-  };
+      test: function (value) {
+        return value === this.resolve(ref);
+      },
+    });
+  }
 
-  Yup.addMethod(Yup.string, 'equalTo', equalTo);
+  Yup.addMethod(Yup.string, "equalTo", equalTo);
 
-  async function handleSubmit(data: RegisterData, {reset}) {
-    try{
+  async function handleSubmit(data: RegisterData, { reset }) {
+    try {
       const schema = Yup.object().shape({
-        name: Yup.string().min(6, "Mínimo de 6 caracteres para este campo!").required("Este campo não pode ficar vazio!"),
-        email: Yup.string().email("É necessário um email válido!").required("Este campo não pode ficar vazio!"),
-        password: Yup.string().required("Por Favor Adicione Sua Senha").matches(
-          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~])[A-Za-z\d!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]{8,}$/,
-          "Deve conter 8 caracteres, uma maiúscula, uma minúscula, um número e um caractere especial"
+        name: Yup.string()
+          .min(6, "Mínimo de 6 caracteres para este campo!")
+          .required("Este campo não pode ficar vazio!"),
+        email: Yup.string()
+          .email("É necessário um email válido!")
+          .required("Este campo não pode ficar vazio!"),
+        password: Yup.string()
+          .required("Por Favor Adicione Sua Senha")
+          .matches(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~])[A-Za-z\d!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]{8,}$/,
+            "Deve conter 8 caracteres, uma maiúscula, uma minúscula, um número e um caractere especial"
+          ),
+        repeatPassword: Yup.string().equalTo(
+          Yup.ref("password"),
+          "As senhas devem ser iguais!"
         ),
-        repeatPassword: Yup.string().equalTo(Yup.ref('password'), "As senhas devem ser iguais!")
       });
       await schema.validate(data, {
         abortEarly: false,
       });
       const status = await sendData(data);
       status && reset();
-    }catch(err){
-      if(err instanceof Yup.ValidationError){
+    } catch (err) {
+      if (err instanceof Yup.ValidationError) {
         const errors = getValidationsErrors(err);
         formRef.current?.setErrors(errors);
       }
@@ -109,14 +126,14 @@ const Register = () => {
                       <InputText
                         type="email"
                         name="email"
-                        id=""
+                        id="email"
                         placeholder="Seu Email"
                         className="w-full focus:scale-105 px-4 py-2 mt-2 text-base transition duration-500 ease-in-out transform bg-gray-100 border-transparent rounded-lg focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ext-black focus:border-gray-500"
                         required
                       />
                     </div>
                     <div className="flex flex-wrap mt-4 mb-6 -mx-3">
-                    <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0">
+                      <div className="w-full px-3 mb-6 md:w-1/2 md:mb-0">
                         <label className="text-base font-medium leading-relaxed text-white">
                           Senha
                         </label>
@@ -140,7 +157,6 @@ const Register = () => {
                           placeholder="Sua Senha"
                         />
                       </div>
-                      
                     </div>
                     <button
                       type="submit"

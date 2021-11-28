@@ -2,12 +2,21 @@ import React from "react";
 import { createPopper } from "@popperjs/core";
 import type { StrictModifiers } from "@popperjs/core";
 import { FiUser, FiLogOut } from "react-icons/fi";
+import { useAuth } from "../../../hooks/useAuth";
+import Router from "next/router";
 
 const UserDropdown = () => {
   // dropdown props
   const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
   const btnDropdownRef = React.createRef<any>();
   const popoverDropdownRef = React.createRef<any>();
+  const { signOut } = useAuth();
+
+  const handleSignOut = () => {
+    signOut();
+    Router.push("/login");
+  };
+
   const openDropdownPopover = () => {
     createPopper<StrictModifiers>(
       btnDropdownRef.current,
@@ -80,7 +89,7 @@ const UserDropdown = () => {
           className={
             "text-sm py-2 px-4 font-normal w-full whitespace-nowrap bg-transparent text-red-500 flex items-center gap-x-2 hover:text-red-900"
           }
-          onClick={(e) => e.preventDefault()}
+          onClick={() => handleSignOut()}
         >
           <FiLogOut />
           <li>Sair</li>

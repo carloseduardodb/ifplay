@@ -9,16 +9,8 @@ import { DispatchProvider } from "../contexts/DispatchEventContext";
 import AdminLayout from "../layouts/AdminLayout";
 import DefaultLayout from "../layouts/DefaultLayout";
 
-function MyApp({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   const router = useRouter();
-  const { teacher } = useAuth();
-
-  useEffect(() => {
-    console.log(router.pathname);
-    if (router.pathname.includes("/dashboard") && !teacher) {
-      Router.push("/login");
-    }
-  }, []);
 
   //display dashboard
   return (
@@ -38,4 +30,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp;
+export default App;

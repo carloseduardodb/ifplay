@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import {
@@ -14,10 +14,33 @@ import {
 
 import NotificationDropdown from "../NotificationDropdown";
 import UserDropdown from "../UserDropdown";
+import { useDispatchGlobalEvent } from "../../../hooks/useDispatchGlobalEvent";
+import api from "../../../services/api";
+
+type Props = {
+  created_at: Date;
+  id: number;
+  name: string;
+  teacher_id: number;
+  updated_at: Date;
+};
 
 export default function Sidebar() {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
   const router = useRouter();
+
+  const [playlists, setPlaylists] = React.useState<Props[]>([]);
+  const { dispatch } = useDispatchGlobalEvent();
+  useEffect(() => {
+    api
+      .get("teacher/playlist")
+      .then((response) => {
+        setPlaylists(response.data.playlists);
+      })
+      .catch((err) => {
+        alert("Erro ao carregar playlists");
+      });
+  }, [dispatch]);
   return (
     <>
       <nav
@@ -175,36 +198,18 @@ export default function Sidebar() {
                 </Link>
                 {router.pathname.indexOf("/dashboard/playlists") !== -1 ? (
                   <ul className="flex flex-col gap-y-3 mt-3 font-light text-sm">
-                    <li>
-                      <Link href="/dashboard/playlists/specific">
-                        <a
-                          href="#"
-                          className="text-white ml-8 hover:text-p-green"
-                        >
-                          Geometria analitica
-                        </a>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/dashboard/specific">
-                        <a
-                          href="#"
-                          className="text-white ml-8 hover:text-p-green"
-                        >
-                          Computação quantica
-                        </a>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/dashboard/specific">
-                        <a
-                          href="#"
-                          className="text-white ml-8 hover:text-p-green"
-                        >
-                          Behaviorismo
-                        </a>
-                      </Link>
-                    </li>
+                    {playlists.map((playlist) => (
+                      <li>
+                        <Link href={`/dashboard/playlists/${playlist.name}`}>
+                          <a
+                            href="#"
+                            className="text-white ml-8 hover:text-p-green"
+                          >
+                            {playlist.name}
+                          </a>
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 ) : (
                   ""

@@ -4,12 +4,13 @@
   "private": true,
   "license": "Creative Commons",
   "scripts": {
-    "dev": "NODE_OPTIONS='--inspect' next dev",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "commit": "git-cz"
   },
   "dependencies": {
+    "@headlessui/react": "^1.4.2",
     "@popperjs/core": "^2.9.2",
     "@tanem/react-nprogress": "^3.0.80",
     "@types/react-custom-scrollbars": "^4.0.7",

@@ -14,19 +14,19 @@ export default function Home() {
   return (
     <div className="flex justify-center">
       <div className="px-10">
-      <Head>
-        <title>IF (PLAY)</title>
-      </Head>
-      <Navbar />
-      <Presentation />
-      <HowItWorks />
-      <Teacher />
-      <Student />
-      <RecentTracks />
-      <RecentVideos />
-      <SeeAllVideos />
-      <Footer />
-      <YouWantCookies />
+        <Head>
+          <title>IF (PLAY)</title>
+        </Head>
+        <Navbar />
+        <Presentation />
+        <HowItWorks />
+        <Teacher />
+        <Student />
+        <RecentTracks />
+        <RecentVideos />
+        <SeeAllVideos />
+        <Footer />
+        <YouWantCookies />
       </div>
     </div>
   );

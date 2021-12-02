@@ -1,8 +1,14 @@
 import React from "react";
 import { FiFilePlus } from "react-icons/fi";
 import CardStats from "../CardStats";
+import CreatePlaylistModal from "../CreatePlaylistModal/index";
+import { useState } from "react";
 
 const HeaderStatsPlaylists = () => {
+  const [open, setOpen] = useState(false);
+  const handleViewModal = () => {
+    setOpen(true);
+  };
   return (
     <div className="relative bg-p-black-dark md:pt-24 pb-16 xs:pb-1 pt-8">
       <div className="px-4 md:px-12 mx-auto w-full">
@@ -33,9 +39,15 @@ const HeaderStatsPlaylists = () => {
               />
             </div>
             <div className="w-full lg:w-6/12 xl:w-6/12 px-4 flex flex-row-reverse">
-              <button className="bg-p-green rounded-full p-3 h-16 w-16 flex justify-center items-center xs:mb-5">
+              <button
+                onClick={() => {
+                  handleViewModal();
+                }}
+                className="bg-p-green rounded-full p-3 h-16 w-16 flex justify-center items-center xs:mb-5"
+              >
                 <FiFilePlus size={35} color="white" />
               </button>
+              <CreatePlaylistModal open={open} setOpen={setOpen} />
             </div>
           </div>
         </div>

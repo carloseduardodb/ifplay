@@ -1,7 +1,7 @@
 import React from "react";
 import { FiFilePlus } from "react-icons/fi";
 import CardStats from "../CardStats";
-import CreatePlaylistModal from "../CreatePlaylistModal/index";
+import CreatePlaylistModal from "../Modals/CreatePlaylistModal/index";
 import { useState } from "react";
 
 const HeaderStatsPlaylists = () => {

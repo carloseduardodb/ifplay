@@ -16,6 +16,7 @@ import NotificationDropdown from "../NotificationDropdown";
 import UserDropdown from "../UserDropdown";
 import { useDispatchGlobalEvent } from "../../../hooks/useDispatchGlobalEvent";
 import api from "../../../services/api";
+import { useState } from "react";
 
 type Props = {
   created_at: Date;
@@ -26,10 +27,12 @@ type Props = {
 };
 
 export default function Sidebar() {
-  const [collapseShow, setCollapseShow] = React.useState("hidden");
+  const [collapseShow, setCollapseShow] = useState("hidden");
   const router = useRouter();
 
-  const [playlists, setPlaylists] = React.useState<Props[]>([]);
+  console.log(router.pathname);
+
+  const [playlists, setPlaylists] = useState<Props[]>([]);
   const { dispatch } = useDispatchGlobalEvent();
   useEffect(() => {
     api
@@ -85,9 +88,7 @@ export default function Sidebar() {
             <li className="inline-block relative">
               <NotificationDropdown />
             </li>
-            <li className="inline-block relative">
-              <UserDropdown />
-            </li>
+            <li className="inline-block relative">{`<UserDropdown />`}</li>
           </ul>
           {/* Collapse */}
           <div
@@ -203,7 +204,13 @@ export default function Sidebar() {
                         <Link href={`/dashboard/playlists/${playlist.name}`}>
                           <a
                             href="#"
-                            className="text-white ml-8 hover:text-p-green"
+                            className={`text-white ml-8 hover:text-p-green ${
+                              router.pathname.includes(
+                                `/dashboard/playlists/[name]`
+                              )
+                                ? "text-p-green"
+                                : ""
+                            }`}
                           >
                             {playlist.name}
                           </a>

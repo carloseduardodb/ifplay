@@ -3,6 +3,7 @@ import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { HiSave } from "react-icons/hi";
 import { FiAperture } from "react-icons/fi";
+import api from "../../../../services/api";
 
 type Props = {
   open: boolean;
@@ -15,6 +16,20 @@ export default function CreateQuestionsModal() {
   const handleViewModal = (name: string) => {
     setOpen(true);
   };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setOpen(false);
+    api
+      .post("/questions", {})
+      .then((response) => {
+        alert("Question created successfully");
+      })
+      .catch((err) => {
+        alert("Error creating question");
+      });
+  };
+
   return (
     <>
       <button

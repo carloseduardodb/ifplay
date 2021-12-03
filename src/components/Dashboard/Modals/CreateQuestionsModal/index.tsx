@@ -21,7 +21,7 @@ export default function CreateQuestionsModal() {
     e.preventDefault();
     setOpen(false);
     api
-      .post("/questions", {})
+      .post("/teacher/questions", {})
       .then((response) => {
         alert("Question created successfully");
       })

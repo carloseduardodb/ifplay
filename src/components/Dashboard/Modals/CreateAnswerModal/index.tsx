@@ -21,7 +21,7 @@ export default function CreateAnswerModal() {
     e.preventDefault();
     setOpen(false);
     api
-      .post("/answers", {})
+      .post("teacher/answers", {})
       .then((response) => {
         alert("Answer created successfully");
       })

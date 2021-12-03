@@ -21,7 +21,7 @@ export default function CreateQuizModal() {
     e.preventDefault();
     setOpen(false);
     api
-      .post("/quizzes", {
+      .post("/teacher/quizzes", {
         name: "",
       })
       .then(() => {

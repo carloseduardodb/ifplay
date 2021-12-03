@@ -19,7 +19,7 @@ export default function CreateTeamModal() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     api
-      .post("/teams", {})
+      .post("/teacher/teams", {})
       .then((response) => {
         alert("Team created successfully");
       })

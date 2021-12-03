@@ -18,7 +18,7 @@ export default function CreateVideosModal() {
   };
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     api
-      .post("/videos", {})
+      .post("/teacher/videos", {})
       .then((response) => {
         alert("Video criado com sucesso!");
       })

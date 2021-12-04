@@ -2,7 +2,7 @@
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { HiSave } from "react-icons/hi";
-import { FiAperture, FiPlusCircle } from "react-icons/fi";
+import { FiEdit3 } from "react-icons/fi";
 import api from "../../../../services/api";
 
 type Props = {
@@ -40,7 +40,7 @@ export default function CreateQuizModal() {
         }}
         className="flex p-1 rounded-full items-center justify-center font-semibold leading-none text-white bg-p-green hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-p-green focus:outline-none"
       >
-        <FiPlusCircle size={40} />
+        <FiEdit3 size={40} />
       </button>
 
       <Transition.Root show={open} as={Fragment}>

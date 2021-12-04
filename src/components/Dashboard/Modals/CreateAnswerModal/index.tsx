@@ -21,9 +21,23 @@ export default function CreateAnswerModal() {
     e.preventDefault();
     setOpen(false);
     api
-      .post("teacher/answers", {})
+      .post("teacher/questions", {
+        quizId: router.query.quizId,
+        title: title,
+        question1: question1,
+        question2: question2,
+        question3: question3,
+        question4: question4,
+        response: {
+          question1Rp: question1Rp,
+          question2Rp: question2Rp,
+          question3Rp: question3Rp,
+          question4Rp: question4Rp,
+        },
+      })
       .then((response) => {
-        alert("Answer created successfully");
+        alert("Questão criada com sucesso");
+        setDispatch(!dispatch);
       })
       .catch((error) => {
         alert("Error creating answer");

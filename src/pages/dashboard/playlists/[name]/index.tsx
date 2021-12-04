@@ -29,12 +29,9 @@ const specific = () => {
             <div className="w-full p-3">
               <div className="bg-white rounded-lg shadow p-6">
                 <h2 className="text-2xl font-semibold">Nome do questionário</h2>
-                <h4 className="font-semibold my-2">Questionário sem nome</h4>
+                <h4 className="font-semibold my-2">{name}</h4>
                 <div className="flex flex-row justify-end w-full flex-wrap gap-5">
-                  <CreateQuizModal />
-                  <button className="flex p-1 rounded-full items-center justify-center font-semibold leading-none text-white bg-p-green hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-p-green focus:outline-none">
-                    <FiEdit3 size={40} />
-                  </button>
+                  <EditPlaylistNameModal />
                 </div>
               </div>
             </div>

@@ -4,6 +4,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { HiSave } from "react-icons/hi";
 import { FiAperture } from "react-icons/fi";
 import api from "../../../../services/api";
+import { useRouter } from "next/router";
 
 type Props = {
   open: boolean;
@@ -14,18 +15,24 @@ export default function CreateTeamModal() {
   const cancelButtonRef = useRef(null);
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
+  const router = useRouter();
   const handleViewModal = (name: string) => {
     setOpen(true);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setOpen(false);
     api
-      .post("/teacher/teams", {})
+      .post("/teacher/teams", {
+        name: name,
+        quizId: router.query.quizId,
+      })
       .then((response) => {
-        alert("Team created successfully");
+        alert("Sucesso ao criar turma");
       })
       .catch((err) => {
-        alert("Error creating team");
+        alert("Erro ao criar turma");
       });
   };
 

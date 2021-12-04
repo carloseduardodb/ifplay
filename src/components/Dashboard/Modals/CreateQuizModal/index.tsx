@@ -96,11 +96,13 @@ export default function CreateQuizModal() {
                         as="h3"
                         className="text-lg leading-6 font-medium text-gray-900"
                       >
-                        Digite o nome do seu quiz
+                        Digite novo nome do seu quiz
                       </Dialog.Title>
                       <div className="mt-2">
                         <input
-                          onChange={(e) => {}}
+                          onChange={(e) => {
+                            setName(e.target.value);
+                          }}
                           id="quiz-name"
                           name="quiz-name"
                           type="text"

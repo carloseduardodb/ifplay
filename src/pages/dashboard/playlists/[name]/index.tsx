@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FiArchive, FiEdit3, FiPlay } from "react-icons/fi";
 import CreateAnswerModal from "../../../../components/Dashboard/Modals/CreateAnswerModal";
 import CreateVideosModal from "../../../../components/Dashboard/Modals/CreateVideosModal/index";
 import EditPlaylistNameModal from "../../../../components/Dashboard/Modals/CreateQuizModal/index";
 import CreateTeamModal from "../../../../components/Dashboard/Modals/CreateTeamModal/index";
+import api from "../../../../services/api";
+import { useRouter } from "next/router";
+import { useDispatchGlobalEvent } from "../../../../hooks/useDispatchGlobalEvent";
+import CardsVideos from "../../../../components/Dashboard/CardsVideos/index";
 
 const specific = () => {
+  const [name, setName] = React.useState("");
+  const router = useRouter();
+  const { dispatch } = useDispatchGlobalEvent();
+
+  useEffect(() => {
+    api
+      .get(`/teacher/quizzes/${router.query.quizId}`)
+      .then((response) => {
+        setName(response.data.title);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [dispatch, router.query.quizId]);
+
   return (
     <>
       <div className="flex p-5 mb-10 mt-20 mx-2">

@@ -9,6 +9,7 @@ type Props = {
   created_at: Date;
   id: number;
   name: string;
+  quiz_id: number;
   teacher_id: number;
   updated_at: Date;
 };
@@ -60,7 +61,7 @@ const AllPlaylists = () => {
               }}
             >
               <a className="bg-blue-500 px-4 py-1 rounded text-white">
-              Gerenciar
+                Gerenciar
               </a>
             </Link>
           </div>

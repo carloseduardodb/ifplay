@@ -10,7 +10,7 @@ import {
 import CreateAnswerModal from "../../components/Dashboard/Modals/CreateAnswerModal";
 import CreateVideosModal from "../../components/Dashboard/Modals/CreateVideosModal/index";
 import CreateQuestionsModal from "../../components/Dashboard/Modals/CreateQuestionsModal/index";
-import CreateQuizModal from "../../components/Dashboard/Modals/CreateQuizModal/index";
+import EditNameQuizModal from "../../components/Dashboard/Modals/CreateQuizModal/index";
 import CreateTeamModal from "../../components/Dashboard/Modals/CreateTeamModal/index";
 import HeaderStats from "../../components/Dashboard/HeaderStats/index";
 import CardTable from "../../components/Dashboard/CardTable/index";

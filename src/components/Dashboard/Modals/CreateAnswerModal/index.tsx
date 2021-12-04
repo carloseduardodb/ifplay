@@ -155,6 +155,7 @@ export default function CreateAnswerModal() {
                                 onChange={(e) => {
                                   setQuestion2(e.target.value);
                                 }}
+                                value="Teste"
                                 id="playlist-name"
                                 name="playlist-name"
                                 type="text"

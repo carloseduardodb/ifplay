@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import api from "../../../services/api";
 import { useDispatchGlobalEvent } from "../../../hooks/useDispatchGlobalEvent";
+import CardDropDown from "../CardDropDown/index";
+import Link from "next/link";
 
 type Props = {
   created_at: Date;

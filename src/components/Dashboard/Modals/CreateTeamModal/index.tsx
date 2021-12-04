@@ -13,6 +13,7 @@ type Props = {
 export default function CreateTeamModal() {
   const cancelButtonRef = useRef(null);
   const [open, setOpen] = useState(false);
+  const [name, setName] = useState("");
   const handleViewModal = (name: string) => {
     setOpen(true);
   };
@@ -97,7 +98,9 @@ export default function CreateTeamModal() {
                       </h6>
                       <div className="mt-2">
                         <input
-                          onChange={(e) => {}}
+                          onChange={(e) => {
+                            setName(e.target.value);
+                          }}
                           id="playlist-name"
                           name="playlist-name"
                           type="text"

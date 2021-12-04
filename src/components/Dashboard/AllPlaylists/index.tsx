@@ -49,9 +49,18 @@ const AllPlaylists = () => {
             </div>
           </section>
           <div className="text-right">
-            <button className="bg-blue-500 px-4 py-1 rounded text-white">
+            <Link
+              href={{
+                pathname: `/dashboard/playlists/${playlist.name}`,
+                query: {
+                  quizId: playlist.quiz_id,
+                },
+              }}
+            >
+              <a className="bg-blue-500 px-4 py-1 rounded text-white">
               Gerenciar
-            </button>
+              </a>
+            </Link>
           </div>
         </div>
       ))}

@@ -12,7 +12,19 @@ type Props = {
 
 export default function CreateAnswerModal() {
   const cancelButtonRef = useRef(null);
+  const router = useRouter();
   const [open, setOpen] = useState(false);
+  const [title, setTitle] = useState("Teste");
+  const [question1, setQuestion1] = useState("Teste");
+  const [question2, setQuestion2] = useState("Teste");
+  const [question3, setQuestion3] = useState("Teste");
+  const [question4, setQuestion4] = useState("Teste");
+  const [question1Rp, setQuestion1Rp] = useState<Boolean>(false);
+  const [question2Rp, setQuestion2Rp] = useState<Boolean>(false);
+  const [question3Rp, setQuestion3Rp] = useState<Boolean>(false);
+  const [question4Rp, setQuestion4Rp] = useState<Boolean>(false);
+  const { dispatch, setDispatch } = useDispatchGlobalEvent();
+
   const handleViewModal = (name: string) => {
     setOpen(true);
   };
@@ -141,7 +153,6 @@ export default function CreateAnswerModal() {
                                 onChange={(e) => {
                                   setQuestion2(e.target.value);
                                 }}
-                                value="Teste"
                                 id="playlist-name"
                                 name="playlist-name"
                                 type="text"

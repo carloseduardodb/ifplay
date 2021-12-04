@@ -139,6 +139,7 @@ const Register = () => {
                         </label>
                         <InputText
                           name="password"
+                          value="gZUHD2%R!!zo"
                           className="block focus:scale-105 w-full px-4 py-2 mt-2 text-base text-black transition duration-500 ease-in-out transform bg-gray-100 border-transparent rounded-lg focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ext-black focus:border-gray-500"
                           id="password"
                           type="password"
@@ -151,6 +152,7 @@ const Register = () => {
                         </label>
                         <InputText
                           name="repeatPassword"
+                          value="gZUHD2%R!!zo"
                           className="block focus:scale-105 w-full px-4 py-2 mt-2 text-base text-black transition duration-500 ease-in-out transform bg-gray-100 border-transparent rounded-lg focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ext-black focus:border-gray-500"
                           id="repeatPassword"
                           type="password"

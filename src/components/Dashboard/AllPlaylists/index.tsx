@@ -28,8 +28,8 @@ const AllPlaylists = () => {
   return (
     <section className="grid grid-flow-row xs:grid-cols-1 lg:grid-cols-2 md:grid-cols-1 2xl:grid-cols-3 mx-16 mb-16 lg:gap-x-16 gap-y-8">
       {playlists.map((playlist) => (
-        <div className="bg-white p-5 relative rounded-sm">
-          <FaChevronDown className="absolute right-0 mr-5" size={25} />
+        <div key={playlist.id} className="bg-white p-5 relative rounded-sm">
+          <CardDropDown id={playlist.id} />
           <h4 className="text-center mb-5 font-bold text-xl">
             {playlist.name}
           </h4>

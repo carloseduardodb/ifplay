@@ -21,6 +21,7 @@ import { useState } from "react";
 type Props = {
   created_at: Date;
   id: number;
+  quiz_id: number;
   name: string;
   teacher_id: number;
   updated_at: Date;

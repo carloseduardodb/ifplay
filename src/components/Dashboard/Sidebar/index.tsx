@@ -200,8 +200,15 @@ export default function Sidebar() {
                 {router.pathname.indexOf("/dashboard/playlists") !== -1 ? (
                   <ul className="flex flex-col gap-y-3 mt-3 font-light text-sm">
                     {playlists.map((playlist) => (
-                      <li>
-                        <Link href={`/dashboard/playlists/${playlist.name}`}>
+                      <li key={playlist.id}>
+                        <Link
+                          href={{
+                            pathname: `/dashboard/playlists/${playlist.name}`,
+                            query: {
+                              quizId: playlist.quiz_id,
+                            },
+                          }}
+                        >
                           <a
                             href="#"
                             className={`text-white ml-8 hover:text-p-green ${

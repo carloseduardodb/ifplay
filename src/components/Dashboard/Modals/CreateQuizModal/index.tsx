@@ -21,11 +21,12 @@ export default function CreateQuizModal() {
     e.preventDefault();
     setOpen(false);
     api
-      .post("/teacher/quizzes", {
-        name: "",
+      .post(`teacher/playlist/quiz/${router.query.quizId}`, {
+        title: name,
       })
-      .then(() => {
-        alert("Quiz criado com sucesso!");
+      .then((data) => {
+        alert("Novo nome adicionado com sucesso!");
+        setDispatch(!dispatch);
       })
       .catch(() => {
         alert("Erro ao criar quiz");

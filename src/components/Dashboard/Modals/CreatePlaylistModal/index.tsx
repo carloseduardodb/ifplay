@@ -13,7 +13,7 @@ type Props = {
 export default function CreatePlaylistModal({ open, setOpen }: Props) {
   const cancelButtonRef = useRef(null);
   const [playlistName, setPlaylistName] = useState("");
-  const { setDispatch } = useDispatchGlobalEvent();
+  const { setDispatch, dispatch } = useDispatchGlobalEvent();
   const handleSubmit = () => {
     setOpen(false);
     api
@@ -22,7 +22,7 @@ export default function CreatePlaylistModal({ open, setOpen }: Props) {
       })
       .then((data) => {
         alert("Playlist criada com sucesso!");
-        setDispatch(true);
+        setDispatch(!dispatch);
       })
       .catch((err) => {
         alert("Erro ao criar playlist");

@@ -31,8 +31,6 @@ export default function Sidebar() {
   const [collapseShow, setCollapseShow] = useState("hidden");
   const router = useRouter();
 
-  console.log(router.pathname);
-
   const [playlists, setPlaylists] = useState<Props[]>([]);
   const { dispatch } = useDispatchGlobalEvent();
   useEffect(() => {

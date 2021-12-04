@@ -2,7 +2,7 @@ import React from "react";
 import { FiArchive, FiEdit3, FiPlay } from "react-icons/fi";
 import CreateAnswerModal from "../../../../components/Dashboard/Modals/CreateAnswerModal";
 import CreateVideosModal from "../../../../components/Dashboard/Modals/CreateVideosModal/index";
-import CreateQuizModal from "../../../../components/Dashboard/Modals/CreateQuizModal/index";
+import EditPlaylistNameModal from "../../../../components/Dashboard/Modals/CreateQuizModal/index";
 import CreateTeamModal from "../../../../components/Dashboard/Modals/CreateTeamModal/index";
 
 const specific = () => {

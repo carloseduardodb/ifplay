@@ -4,6 +4,8 @@ import { Dialog, Transition } from "@headlessui/react";
 import { HiSave } from "react-icons/hi";
 import { FiEdit3 } from "react-icons/fi";
 import api from "../../../../services/api";
+import { useRouter } from "next/router";
+import { useDispatchGlobalEvent } from "../../../../hooks/useDispatchGlobalEvent";
 
 type Props = {
   open: boolean;
@@ -12,10 +14,14 @@ type Props = {
 
 export default () => {
   const cancelButtonRef = useRef(null);
+  const router = useRouter();
+  const { id } = router.query;
   const [open, setOpen] = useState(false);
   const handleViewModal = (name: string) => {
     setOpen(true);
   };
+  const [name, setName] = useState("");
+  const { setDispatch, dispatch } = useDispatchGlobalEvent();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

@@ -98,7 +98,10 @@ export default function CreateAnswerModal() {
                       </Dialog.Title>
                       <div className="mt-2 w-96">
                         <input
-                          onChange={(e) => {}}
+                          onChange={(e) => {
+                            setQuestion1(e.target.value);
+                          }}
+                          value="Teste"
                           id="playlist-name"
                           name="playlist-name"
                           type="text"
@@ -121,7 +124,9 @@ export default function CreateAnswerModal() {
                             </label>
                             <div className="flex items-center">
                               <input
-                                onChange={(e) => {}}
+                                onChange={(e) => {
+                                  setQuestion2(e.target.value);
+                                }}
                                 id="playlist-name"
                                 name="playlist-name"
                                 type="text"
@@ -129,7 +134,11 @@ export default function CreateAnswerModal() {
                                 className="appearance-none mt-2 rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                                 placeholder="Resposta"
                               />
-                              <input type="checkbox" className="ml-2" />
+                              <input
+                                onChange={() => setQuestion1Rp(!question1Rp)}
+                                type="checkbox"
+                                className="ml-2"
+                              />
                             </div>
                             <br />
                           </div>
@@ -143,15 +152,22 @@ export default function CreateAnswerModal() {
                             </label>
                             <div className="flex items-center">
                               <input
-                                onChange={(e) => {}}
+                                onChange={(e) => {
+                                  setQuestion3(e.target.value);
+                                }}
                                 id="playlist-name"
+                                value="Teste"
                                 name="playlist-name"
                                 type="text"
                                 required
                                 className="appearance-none mt-2 rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                                 placeholder="Resposta"
                               />
-                              <input type="checkbox" className="ml-2" />
+                              <input
+                                onChange={() => setQuestion2Rp(!question2Rp)}
+                                type="checkbox"
+                                className="ml-2"
+                              />
                             </div>
                             <br />
                           </div>
@@ -165,15 +181,22 @@ export default function CreateAnswerModal() {
                             </label>
                             <div className="flex items-center">
                               <input
-                                onChange={(e) => {}}
+                                onChange={(e) => {
+                                  setQuestion4(e.target.value);
+                                }}
                                 id="playlist-name"
+                                value="Teste"
                                 name="playlist-name"
                                 type="text"
                                 required
                                 className="appearance-none mt-2 rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                                 placeholder="Resposta"
                               />
-                              <input type="checkbox" className="ml-2" />
+                              <input
+                                onChange={() => setQuestion3Rp(!question3Rp)}
+                                type="checkbox"
+                                className="ml-2"
+                              />
                             </div>
                             <br />
                           </div>
@@ -187,15 +210,23 @@ export default function CreateAnswerModal() {
                             </label>
                             <div className="flex items-center">
                               <input
-                                onChange={(e) => {}}
+                                onChange={(e) => {
+                                  setTitle(e.target.value);
+                                }}
                                 id="playlist-name"
+                                value="Teste"
                                 name="playlist-name"
                                 type="text"
                                 required
                                 className="appearance-none mt-2 rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                                 placeholder="Resposta"
                               />
-                              <input type="checkbox" className="ml-2" />
+                              <input
+                                onChange={() => setQuestion4Rp(!question4Rp)}
+                                type="checkbox"
+                                className="ml-2"
+                                checked
+                              />
                             </div>
                             <br />
                           </div>

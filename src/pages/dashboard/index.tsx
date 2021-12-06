@@ -1,17 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
-import {
-  FiAperture,
-  FiArchive,
-  FiEdit3,
-  FiPlay,
-  FiPlusCircle,
-} from "react-icons/fi";
-import CreateAnswerModal from "../../components/Dashboard/Modals/CreateAnswerModal";
-import CreateVideosModal from "../../components/Dashboard/Modals/CreateVideosModal/index";
-import CreateQuestionsModal from "../../components/Dashboard/Modals/CreateQuestionsModal/index";
-import EditNameQuizModal from "../../components/Dashboard/Modals/CreateQuizModal/index";
-import CreateTeamModal from "../../components/Dashboard/Modals/CreateTeamModal/index";
 import HeaderStats from "../../components/Dashboard/HeaderStats/index";
 import CardTable from "../../components/Dashboard/CardTable/index";
 

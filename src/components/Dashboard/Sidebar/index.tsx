@@ -230,13 +230,12 @@ export default function Sidebar() {
               </li>
 
               <li className="items-center mt-2">
-                <Link href="/dashboard">
+                <Link href="/dashboard/answers">
                   <a
                     href="#"
                     className={
                       "text-xs uppercase py-3 px-4 font-bold flex flex-row" +
-                      (router.pathname.indexOf("/dashboard/questionaries") !==
-                      -1
+                      (router.pathname.indexOf("/dashboard/answers") !== -1
                         ? "text-light text-white bg-p-green rounded hover:text-light"
                         : "text-light text-white hover:text-p-green")
                     }
@@ -244,7 +243,7 @@ export default function Sidebar() {
                     <i
                       className={
                         "fas fa-tv mr-2 text-sm " +
-                        (router.pathname.indexOf("/admin/dashboard") !== -1
+                        (router.pathname.indexOf("/dashboard/answers") !== -1
                           ? "opacity-75"
                           : "text-blueGray-300")
                       }

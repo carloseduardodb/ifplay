@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 // components
@@ -6,8 +6,36 @@ import PropTypes from "prop-types";
 import TableDropdown from "../TableDropdown";
 import { FiUser } from "react-icons/fi";
 import { FaCircle, FaEye, FaUserCircle } from "react-icons/fa";
+import { useDispatchGlobalEvent } from "../../../hooks/useDispatchGlobalEvent";
+import api from "../../../services/api";
 
+type lastResponse = {
+  name: string;
+  question_id: number;
+  teacher_id: number;
+  status: string;
+  email: string;
+  errors: number;
+  hits: number;
+};
+
+type StatsProps = {
+  responsesCount: number;
+  emailsCount: number;
+  playlistsCount: number;
+  answersCount: number;
+  lastResponses: lastResponse[];
+};
 export default function CardTable({ color }) {
+  const { dispatch, setDispatch } = useDispatchGlobalEvent();
+  const [stats, setStats] = React.useState<StatsProps>({} as StatsProps);
+
+  useEffect(() => {
+    api.get("/teacher/items/count").then((response) => {
+      setStats(response.data);
+    });
+  }, [dispatch]);
+
   return (
     <>
       <div
@@ -88,45 +116,43 @@ export default function CardTable({ color }) {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
-                  <span className="h-12 w-12 bg-blue-400 rounded-full border flex justify-center items-center">
-                    <FaUserCircle size={35} />
-                  </span>
-                  <span
-                    className={
-                      "ml-3 font-bold " +
-                      +(color === "light" ? "text-blueGray-600" : "text-white")
-                    }
-                  >
-                    Carlos Eduardo Dias Batista
-                  </span>
-                </th>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  carlos@gmail.com
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex">
-                    <FaCircle color="green" className="mr-2" /> <span>8</span>
-                  </div>
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex">
-                    <FaCircle color="red" className="mr-2" /> <span>2</span>
-                  </div>
-                </td>
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                  <div className="flex items-center">
-                    <a
-                      href="#"
-                      className="bg-blue-500 px-5 py-3 rounded text-white flex gap-x-2 justify-center items-center hover:bg-blue-800"
-                    >
-                      <FaEye />
-                      <span>Visualizar</span>
-                    </a>
-                  </div>
-                </td>
-              </tr>
+              {/* Table rows }
+              {stats.lastResponses.length > 0 ??
+                stats.lastResponses.map((lastResponse) => {
+                  <tr>
+                    <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
+                      <span className="h-12 w-12 bg-blue-400 rounded-full border flex justify-center items-center">
+                        <FaUserCircle size={35} />
+                      </span>
+                      <span
+                        className={
+                          "ml-3 font-bold " +
+                          +(color === "light"
+                            ? "text-blueGray-600"
+                            : "text-white")
+                        }
+                      >
+                        {lastResponse.name}
+                      </span>
+                    </th>
+                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                      {lastResponse.email}
+                    </td>
+                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                      <div className="flex">
+                        <FaCircle color="green" className="mr-2" />{" "}
+                        <span>{lastResponse.hits}</span>
+                      </div>
+                    </td>
+                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                      <div className="flex">
+                        <FaCircle color="red" className="mr-2" />{" "}
+                        <span>{lastResponse.errors}</span>
+                      </div>
+                    </td>
+                  </tr>;
+                })}
+              {*/}
             </tbody>
           </table>
         </div>

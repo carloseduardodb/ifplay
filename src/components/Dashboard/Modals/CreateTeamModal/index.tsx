@@ -5,6 +5,7 @@ import { HiSave } from "react-icons/hi";
 import { FiAperture } from "react-icons/fi";
 import api from "../../../../services/api";
 import { useRouter } from "next/router";
+import { useDispatchGlobalEvent } from "../../../../hooks/useDispatchGlobalEvent";
 
 type Props = {
   open: boolean;
@@ -19,6 +20,7 @@ export default function CreateTeamModal() {
   const handleViewModal = (name: string) => {
     setOpen(true);
   };
+  const { setDispatch, dispatch } = useDispatchGlobalEvent();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -30,6 +32,7 @@ export default function CreateTeamModal() {
       })
       .then((response) => {
         alert("Sucesso ao criar turma");
+        setDispatch(!dispatch);
       })
       .catch((err) => {
         alert("Erro ao criar turma");

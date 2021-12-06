@@ -9,9 +9,10 @@ type Props = {
   created_at: Date;
   id: number;
   name: string;
-  quiz_id: number;
-  teacher_id: number;
+  quizId: number;
+  teacherId: number;
   updated_at: Date;
+  quantity: { videos: 6; questions: 5; teams: 5; answers: 0 };
 };
 
 const AllPlaylists = () => {
@@ -19,9 +20,10 @@ const AllPlaylists = () => {
   const { dispatch } = useDispatchGlobalEvent();
   useEffect(() => {
     api
-      .get("teacher/playlist")
+      .get("teacher/count-items")
       .then((response) => {
-        setPlaylists(response.data.playlists);
+        console.log(response.data);
+        setPlaylists(response.data);
       })
       .catch((err) => {
         alert("Erro ao carregar playlists");
@@ -30,7 +32,7 @@ const AllPlaylists = () => {
 
   return (
     <section className="grid grid-flow-row xs:grid-cols-1 lg:grid-cols-2 md:grid-cols-1 2xl:grid-cols-3 mx-16 mb-16 lg:gap-x-16 gap-y-8">
-      {playlists.map((playlist) => (
+      {playlists?.map((playlist) => (
         <div key={playlist.id} className="bg-white p-5 relative rounded-sm">
           <CardDropDown id={playlist.id} />
           <h4 className="text-center mb-5 font-bold text-xl">
@@ -38,13 +40,17 @@ const AllPlaylists = () => {
           </h4>
           <section className="flex flex-row justify-between">
             <div className="flex flex-col gap-y-3 w-96 relative -left-12 text-right text-white justify-center">
-              <span className="bg-p-black px-5 py-1 rounded-sm">5 videos</span>
               <span className="bg-p-black px-5 py-1 rounded-sm">
-                10 questões
+                {playlist.quantity.videos} videos
               </span>
-              <span className="bg-red-500 px-5 py-1 rounded-sm">5 turmas</span>
+              <span className="bg-p-black px-5 py-1 rounded-sm">
+                {playlist.quantity.questions} questões
+              </span>
               <span className="bg-red-500 px-5 py-1 rounded-sm">
-                63 respostas
+                {playlist.quantity.teams} turmas
+              </span>
+              <span className="bg-red-500 px-5 py-1 rounded-sm">
+                {playlist.quantity.answers} respostas
               </span>
             </div>
             <div>
@@ -56,7 +62,7 @@ const AllPlaylists = () => {
               href={{
                 pathname: `/dashboard/playlists/${playlist.name}`,
                 query: {
-                  quizId: playlist.quiz_id,
+                  quizId: playlist.quizId,
                 },
               }}
             >

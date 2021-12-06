@@ -1,10 +1,33 @@
-import React from "react";
-
-// components
-
+import React, { useEffect } from "react";
 import CardStats from "../CardStats";
+import { useDispatchGlobalEvent } from "../../../hooks/useDispatchGlobalEvent";
+import api from "../../../services/api";
+
+type StatsProps = {
+  responsesCount: number;
+  emailsCount: number;
+  playlistsCount: number;
+  answersCount: number;
+  lastResponses: [
+    {
+      question_id: number;
+      teacher_id: number;
+      status: string;
+      email: string;
+    }
+  ];
+};
 
 export default function HeaderStats() {
+  const { dispatch, setDispatch } = useDispatchGlobalEvent();
+  const [stats, setStats] = React.useState<StatsProps>({} as StatsProps);
+
+  useEffect(() => {
+    api.get("/teacher/items/count").then((response) => {
+      setStats(response.data);
+    });
+  }, [dispatch]);
+
   return (
     <>
       {/* Header */}
@@ -16,11 +39,11 @@ export default function HeaderStats() {
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
                 <CardStats
                   statSubtitle="Respostas"
-                  statTitle="350"
+                  statTitle={`${stats.responsesCount}`}
                   statArrow="up"
                   statPercent="3.48"
                   statPercentColor="text-green-600"
-                  statDescripiron="No ultimo mês"
+                  statDescription="No ultimo mês"
                   statIconName="far fa-chart-bar"
                   statIconColor="bg-red-500"
                 />
@@ -28,11 +51,11 @@ export default function HeaderStats() {
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
                 <CardStats
                   statSubtitle="Novos emails"
-                  statTitle="8"
+                  statTitle={`${stats.emailsCount}`}
                   statArrow="down"
                   statPercent="9.40"
                   statPercentColor="text-red-500"
-                  statDescripiron="No ultimo mês"
+                  statDescription="No ultimo mês"
                   statIconName="fas fa-chart-pie"
                   statIconColor="bg-blue-500"
                 />
@@ -40,11 +63,11 @@ export default function HeaderStats() {
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
                 <CardStats
                   statSubtitle="Playlists"
-                  statTitle="5"
+                  statTitle={`${stats.playlistsCount}`}
                   statArrow="down"
                   statPercent="1.10"
                   statPercentColor="text-red-500"
-                  statDescripiron="No ultimo mês"
+                  statDescription="No ultimo mês"
                   statIconName="fas fa-users"
                   statIconColor="bg-pink-500"
                 />
@@ -52,11 +75,11 @@ export default function HeaderStats() {
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
                 <CardStats
                   statSubtitle="PERGUNTAS"
-                  statTitle="49,65%"
+                  statTitle={`${stats.answersCount}`}
                   statArrow="up"
                   statPercent="12"
                   statPercentColor="text-green-600"
-                  statDescripiron="No ultimo mês"
+                  statDescription="No ultimo mês"
                   statIconName="fas fa-percent"
                   statIconColor="bg-blue-500"
                 />

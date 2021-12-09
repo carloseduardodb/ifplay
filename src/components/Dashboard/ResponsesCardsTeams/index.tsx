@@ -92,6 +92,10 @@ const ResponsesCardsTeams = () => {
                   <Link
                     href={{
                       pathname: `./responses`,
+                      query: {
+                        playlistId: router.query.playlistId,
+                        teamId: team.id,
+                      },
                     }}
                   >
                     <a

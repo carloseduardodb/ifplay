@@ -116,8 +116,7 @@ export default function CardTable({ color }) {
               </tr>
             </thead>
             <tbody>
-              {/* Table rows }
-              {stats.lastResponses.length > 0 ??
+              {stats.lastResponses !== undefined ??
                 stats.lastResponses.map((lastResponse) => {
                   <tr>
                     <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
@@ -152,7 +151,6 @@ export default function CardTable({ color }) {
                     </td>
                   </tr>;
                 })}
-              {*/}
             </tbody>
           </table>
         </div>

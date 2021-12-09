@@ -11,7 +11,13 @@ import DefaultLayout from "../layouts/DefaultLayout";
 
 function App({ Component, pageProps }) {
   const router = useRouter();
-
+  const { teacher } = useAuth();
+  useEffect(() => {
+    if (!teacher && router.pathname.includes("dashboard")) {
+      Router.push("/login");
+    }
+  }),
+    [teacher];
   //display dashboard
   return (
     <AuthProvider>

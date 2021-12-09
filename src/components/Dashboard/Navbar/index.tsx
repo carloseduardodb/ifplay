@@ -1,8 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import UserDropdown from "../UserDropdown";
 import { FaSearch } from "react-icons/fa";
+import { useRouter } from "next/router";
 
 export default function Navbar() {
+  const [search, setSearch] = React.useState("");
+  const router = useRouter();
+  useEffect(() => {
+    switch (search) {
+      case "Dashboard":
+        router.push("/dashboard");
+        break;
+      case "Playlists":
+        router.push("/dashboard/playlists");
+        break;
+      case "Respostas":
+        router.push("/dashboard/responses");
+        break;
+      case "Atualizar Perfil":
+        router.push("/dashboard/update-profile");
+        break;
+      case "Configurações":
+        router.push("/dashboard/settings");
+        break;
+      default:
+        break;
+    }
+  }, [search]);
+
   return (
     <>
       {/* Navbar */}
@@ -11,7 +36,7 @@ export default function Navbar() {
           {/* Brand */}
           <a
             className="text-white text-sm uppercase hidden lg:inline-block font-semibold"
-            href="#pablo"
+            href="#"
             onClick={(e) => e.preventDefault()}
           >
             Dashboard
@@ -25,10 +50,18 @@ export default function Navbar() {
                 </i>
               </span>
               <input
-                type="text"
+                list="routes"
+                onChange={(e) => setSearch(e.target.value)}
                 placeholder="Pesquise aqui..."
                 className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10"
               />
+              <datalist id="routes">
+                <option value="Dashboard" />
+                <option value="Playlists" />
+                <option value="Respostas" />
+                <option value="Atualizar Perfil" />
+                <option value="Configurações" />
+              </datalist>
             </div>
           </form>
           {/* User */}

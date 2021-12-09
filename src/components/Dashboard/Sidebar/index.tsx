@@ -266,38 +266,12 @@ export default function Sidebar() {
 
             <ul className="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
               <li className="items-center mt-2">
-                <Link href="/dashboard">
+                <Link href="/dashboard/update-profile">
                   <a
                     href="#"
                     className={
                       "text-xs uppercase py-3 px-4 font-bold flex flex-row" +
-                      (router.pathname.indexOf("/dashboard/questionaries") !==
-                      -1
-                        ? "text-light text-white bg-p-green rounded hover:text-light"
-                        : "text-light text-white hover:text-p-green")
-                    }
-                  >
-                    <i
-                      className={
-                        "fas fa-tv mr-2 text-sm " +
-                        (router.pathname.indexOf("/admin/dashboard") !== -1
-                          ? "opacity-75"
-                          : "text-blueGray-300")
-                      }
-                    >
-                      <FaSortNumericUp />
-                    </i>{" "}
-                    <span>Estatisticas do Perfil</span>
-                  </a>
-                </Link>
-              </li>
-              <li className="items-center mt-2">
-                <Link href="/dashboard">
-                  <a
-                    href="#"
-                    className={
-                      "text-xs uppercase py-3 px-4 font-bold flex flex-row" +
-                      (router.pathname.indexOf("/dashboard/questionaries") !==
+                      (router.pathname.indexOf("/dashboard/update-profile") !==
                       -1
                         ? "text-light text-white bg-p-green rounded hover:text-light"
                         : "text-light text-white hover:text-p-green")
@@ -318,13 +292,11 @@ export default function Sidebar() {
                 </Link>
               </li>
               <li className="items-center mt-2">
-                <Link href="/dashboard">
+                <Link href="/dashboard/settings">
                   <a
-                    href="#"
                     className={
                       "text-xs uppercase py-3 px-4 font-bold flex flex-row" +
-                      (router.pathname.indexOf("/dashboard/questionaries") !==
-                      -1
+                      (router.pathname.indexOf("/dashboard/settings") !== -1
                         ? "text-light text-white bg-p-green rounded hover:text-light"
                         : "text-light text-white hover:text-p-green")
                     }

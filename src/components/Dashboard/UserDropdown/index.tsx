@@ -4,6 +4,7 @@ import type { StrictModifiers } from "@popperjs/core";
 import { FiUser, FiLogOut } from "react-icons/fi";
 import { useAuth } from "../../../hooks/useAuth";
 import Router from "next/router";
+import Link from "next/link";
 
 const UserDropdown = () => {
   // dropdown props
@@ -34,7 +35,7 @@ const UserDropdown = () => {
     <>
       <a
         className="text-blueGray-500 block"
-        href="#pablo"
+        href="#"
         ref={btnDropdownRef}
         onClick={(e) => {
           e.preventDefault();
@@ -56,17 +57,17 @@ const UserDropdown = () => {
           "bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
         }
       >
+        <Link href="/dashboard/update-profile">
+          <a
+            className={
+              "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent hover:text-p-green-dark"
+            }
+          >
+            Atualizar perfil
+          </a>
+        </Link>
         <a
-          href="#pablo"
-          className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent hover:text-p-green-dark"
-          }
-          onClick={(e) => e.preventDefault()}
-        >
-          Atualizar perfil
-        </a>
-        <a
-          href="#pablo"
+          href="#"
           className={
             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent hover:text-p-green-dark"
           }
@@ -74,18 +75,18 @@ const UserDropdown = () => {
         >
           Sugerir funcionalidade
         </a>
-        <a
-          href="#pablo"
-          className={
-            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent hover:text-p-green-dark"
-          }
-          onClick={(e) => e.preventDefault()}
-        >
-          Configurações
-        </a>
+        <Link href="/dashboard/settings">
+          <a
+            className={
+              "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent hover:text-p-green-dark"
+            }
+          >
+            Configurações
+          </a>
+        </Link>
         <div className="h-0 my-2 border border-solid border-blueGray-100" />
         <a
-          href="#pablo"
+          href="#"
           className={
             "text-sm py-2 px-4 font-normal w-full whitespace-nowrap bg-transparent text-red-500 flex items-center gap-x-2 hover:text-red-900"
           }

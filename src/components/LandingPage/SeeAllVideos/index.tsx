@@ -19,7 +19,14 @@ const SeeAllVideos = () => {
           <br />
         </span>
         <div className="text-center">
-          <Link href="/videos">
+          <Link
+            href={{
+              pathname: "./playlists",
+              query: {
+                entryMode: "seeAllVideos",
+              },
+            }}
+          >
             <button
               className="bg-p-blue px-5 py-3 rounded text-white mt-6"
               style={{ height: "max-content" }}

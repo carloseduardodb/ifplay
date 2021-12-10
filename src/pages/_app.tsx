@@ -8,6 +8,7 @@ import { useAuth } from "../hooks/useAuth";
 import { DispatchProvider } from "../contexts/DispatchEventContext";
 import AdminLayout from "../layouts/AdminLayout";
 import DefaultLayout from "../layouts/DefaultLayout";
+import { PlaylistProvider } from "../contexts/PlaylistContext";
 
 function App({ Component, pageProps }) {
   const router = useRouter();
@@ -16,21 +17,22 @@ function App({ Component, pageProps }) {
     if (!teacher && router.pathname.includes("dashboard")) {
       Router.push("/login");
     }
-  }),
-    [teacher];
+  }, [teacher !== null]);
   //display dashboard
   return (
     <AuthProvider>
       <DispatchProvider>
-        {router.pathname.includes("dashboard") ? (
-          <AdminLayout>
-            <Component {...pageProps} />
-          </AdminLayout>
-        ) : (
-          <DefaultLayout>
-            <Component {...pageProps} />
-          </DefaultLayout>
-        )}
+        <PlaylistProvider>
+          {router.pathname.includes("dashboard") ? (
+            <AdminLayout>
+              <Component {...pageProps} />
+            </AdminLayout>
+          ) : (
+            <DefaultLayout>
+              <Component {...pageProps} />
+            </DefaultLayout>
+          )}
+        </PlaylistProvider>
       </DispatchProvider>
     </AuthProvider>
   );

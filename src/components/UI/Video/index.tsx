@@ -1,17 +1,122 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaPlay } from "react-icons/fa";
 import { FiArrowRight } from "react-icons/fi";
 
+type VideosProps = {
+  created_at: Date;
+  id: number;
+  playlist_id: number;
+  teacher_id: number;
+  updated_at: Date;
+  url: string;
+  views: number;
+};
 interface videoProperties {
   effects?: Boolean;
+  data?: VideosProps;
 }
 
-const Video: React.FC<videoProperties> = ({ effects = true }) => {
+interface Root {
+  kind: string;
+  etag: string;
+  items: Item[];
+  pageInfo: PageInfo;
+}
+
+interface Item {
+  kind: string;
+  etag: string;
+  id: string;
+  snippet: Snippet;
+}
+
+interface Snippet {
+  publishedAt: string;
+  channelId: string;
+  title: string;
+  description: string;
+  thumbnails: Thumbnails;
+  channelTitle: string;
+  tags: string[];
+  categoryId: string;
+  liveBroadcastContent: string;
+  localized: Localized;
+  defaultAudioLanguage: string;
+}
+
+interface Thumbnails {
+  default: Default;
+  medium: Medium;
+  high: High;
+  standard: Standard;
+  maxres: Maxres;
+}
+
+interface Default {
+  url: string;
+  width: number;
+  height: number;
+}
+
+interface Medium {
+  url: string;
+  width: number;
+  height: number;
+}
+
+interface High {
+  url: string;
+  width: number;
+  height: number;
+}
+
+interface Standard {
+  url: string;
+  width: number;
+  height: number;
+}
+
+interface Maxres {
+  url: string;
+  width: number;
+  height: number;
+}
+
+interface Localized {
+  title: string;
+  description: string;
+}
+
+interface PageInfo {
+  totalResults: number;
+  resultsPerPage: number;
+}
+
+const Video: React.FC<videoProperties> = ({ effects = true, data }) => {
   const [description, isDescription] = useState(false);
+  const [videoProps, setVideoProps] = useState<Root>();
 
   function handleDescriptionView() {
     isDescription(!description);
   }
+
+  //uma funcao que puxa o id do video do youtube usando a url
+  function getId(url: string) {
+    const regExp =
+      /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    return match && match[2].length === 11 ? match[2] : null;
+  }
+
+  useEffect(() => {
+    fetch(
+      `https://www.googleapis.com/youtube/v3/videos?id=${getId(
+        data.url
+      )}&key=AIzaSyA1NpAPjo2rXcj7dRxKwqj9JtlX_P-v0HA%20&part=snippet`
+    )
+      .then((res) => res.json())
+      .then((data: Root) => setVideoProps(data));
+  }, [data]);
 
   return (
     <div className="relative m-5">
@@ -26,11 +131,11 @@ const Video: React.FC<videoProperties> = ({ effects = true }) => {
             description ? "opacity-0" : "opacity-100"
           }`}
         >
-          Tailwind CSS Tutorial #15 - Hover Effects
+          {videoProps?.items[0].snippet.title}
         </a>
         <a
           href=""
-          className={`absolute top-1/2 transform -translate-y-1/2 ${
+          className={`absolute top-1/2 transform -translate-y-1/2 text-yellow-300 ${
             description ? "opacity-0" : "opacity-100"
           }`}
         >
@@ -57,20 +162,12 @@ const Video: React.FC<videoProperties> = ({ effects = true }) => {
           } w-full h-full bg-p-purple absolute z-0 rounded p-5 text-xs text-white shadow-2xl drop-shadow-md`}
         >
           <h3 className="mb-2 text-p-yellow-light font-bold">Descrição:</h3>
-          It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout. The point of
-          using Lorem Ipsum is that it has a more-or-less normal distribution of
-          letters, as opposed to using 'Content here, content here', making it
-          look like readable English. It is a long established fact that a
-          reader will be distracted by the readable content of a page when
-          looking at its layout. The point of using Lorem Ipsum is that it has a
-          more-or-less normal distribution of letters, as opposed to using
-          'Content here, content here', making it look like readable English.
+          {videoProps?.items[0].snippet.description}
         </div>
       </div>
       <img
         className="rounded"
-        src="https://images.unsplash.com/photo-1619446058193-de9ab42a5331?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=666&q=80"
+        src={videoProps?.items[0].snippet.thumbnails.standard.url}
         alt=""
       />
     </div>

@@ -1,6 +1,22 @@
 import React from "react";
+import { ReactNode } from "react";
+import Link from "next/link";
 
-const Track = () => {
+interface TrackProps {
+  created_at: Date;
+  id: number;
+  name: string;
+  quiz_id: number;
+  teacher_id: number;
+  updated_at: Date;
+}
+
+interface Props {
+  children?: ReactNode;
+  data: TrackProps;
+}
+
+const Track = ({ data }: Props) => {
   return (
     <div className="p-5 w-full">
       <a href="">
@@ -12,9 +28,9 @@ const Track = () => {
       </a>
       <div className="bg-p-black-dark opacity-80 px-5 py-2 rounded-b-md">
         <p className="text-white font-bold py-3 text-lg overflow-ellipsis whitespace-nowrap overflow-hidden">
-          <a href="#" className="hover:text-p-yellow-light">
-            Esse é um titulo de uma trilha que deveria ser grande
-          </a>
+          <Link href={`./playlists/${data.id}`}>
+            <a className="hover:text-p-yellow-light">{data.name}</a>
+          </Link>
         </p>
       </div>
     </div>

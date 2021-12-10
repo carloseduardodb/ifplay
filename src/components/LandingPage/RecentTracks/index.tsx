@@ -1,9 +1,27 @@
-import React from "react";
+import { AxiosResponse } from "axios";
+import React, { useEffect } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import api from "../../../services/api";
 import Track from "../../UI/Track";
 
+type PlaylistProps = {
+  created_at: Date;
+  id: number;
+  name: string;
+  quiz_id: number;
+  teacher_id: number;
+  updated_at: Date;
+};
+
 const RecentTracks = () => {
+  const [playlists, setPlaylists] = React.useState<PlaylistProps[]>([]);
+
+  useEffect(() => {
+    api.get("/playlist/last").then(({ data }: AxiosResponse) => {
+      setPlaylists(data);
+    });
+  }, []);
   return (
     <>
       <h2 className="text-white text-3xl font-bold my-3">
@@ -57,12 +75,9 @@ const RecentTracks = () => {
         slidesToSlide={1}
         swipeable
       >
-        <Track />
-        <Track />
-        <Track />
-        <Track />
-        <Track />
-        <Track />
+        {playlists.map((playlist) => (
+          <Track data={playlist} />
+        ))}
       </Carousel>
     </>
   );

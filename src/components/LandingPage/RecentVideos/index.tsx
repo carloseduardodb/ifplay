@@ -1,8 +1,31 @@
-import React from "react";
+import { AxiosResponse } from "axios";
+import React, { useEffect } from "react";
 import Carousel from "react-multi-carousel";
+import api from "../../../services/api";
 import Video from "../../UI/Video";
 
+type VideosProps = {
+  created_at: Date;
+  id: number;
+  playlist_id: number;
+  teacher_id: number;
+  updated_at: Date;
+  url: string;
+  views: number;
+};
+
 const RecentVideos = () => {
+  const [videos, setVideos] = React.useState<VideosProps[]>([]);
+  useEffect(() => {
+    api
+      .get("video/last")
+      .then((response: AxiosResponse) => {
+        setVideos(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <div className="pt-5">
       <h2 className="text-white text-3xl font-bold my-3">
@@ -56,13 +79,11 @@ const RecentVideos = () => {
         slidesToSlide={1}
         swipeable
       >
-        <Video />
-        <Video />
-        <Video />
-        <Video />
-        <Video />
-        <Video />
-        <Video />
+        {videos.map((video) => (
+          <div key={video.id}>
+            <Video data={video} />
+          </div>
+        ))}
       </Carousel>
     </div>
   );

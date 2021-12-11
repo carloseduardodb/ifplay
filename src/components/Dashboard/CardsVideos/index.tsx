@@ -6,6 +6,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 type VideoProps = {
   id: number;
@@ -26,10 +27,9 @@ const CardsVideos = () => {
         .get(`teacher/${router.query.quizId}/videos`)
         .then((response) => {
           setVideos(response.data);
-          //console.log(response.data);
         })
         .catch((error) => {
-          alert(error);
+          toast.error("Erro ao carregar os vídeos");
         });
   }, [router.query, dispatch]);
   return (

@@ -6,6 +6,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 type TeamProps = {
   id: number;
@@ -27,10 +28,9 @@ const CardsTeams = () => {
         .get(`teacher/${router.query.quizId}/teams`)
         .then((response) => {
           setTeams(response.data);
-          //console.log(response.data);
         })
         .catch((error) => {
-          alert(error);
+          toast.error("Erro ao carregar as classes");
         });
   }, [router.query, dispatch]);
   return (

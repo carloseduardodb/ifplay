@@ -3,6 +3,7 @@ import api from "../../../services/api";
 import { useDispatchGlobalEvent } from "../../../hooks/useDispatchGlobalEvent";
 import CardDropDown from "../CardDropDown/index";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 type Props = {
   created_at: Date;
@@ -24,7 +25,7 @@ const ResponsesAllPlaylists = () => {
         setPlaylists(response.data);
       })
       .catch((err) => {
-        alert("Erro ao carregar playlists");
+        toast.error("Erro ao carregar playlists");
       });
   }, [dispatch]);
 

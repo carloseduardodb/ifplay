@@ -17,6 +17,7 @@ import UserDropdown from "../UserDropdown";
 import { useDispatchGlobalEvent } from "../../../hooks/useDispatchGlobalEvent";
 import api from "../../../services/api";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 type Props = {
   created_at: Date;
@@ -40,7 +41,7 @@ export default function Sidebar() {
         setPlaylists(response.data.playlists);
       })
       .catch((err) => {
-        alert("Erro ao carregar playlists");
+        toast.error("Erro ao carregar playlists");
       });
   }, [dispatch]);
   return (

@@ -6,6 +6,7 @@ import { FiAperture } from "react-icons/fi";
 import api from "../../../../services/api";
 import router from "next/router";
 import { useDispatchGlobalEvent } from "../../../../hooks/useDispatchGlobalEvent";
+import { toast } from "react-toastify";
 
 type Props = {
   open: boolean;
@@ -39,11 +40,11 @@ export default function CreateVideosModal() {
           playlistId: router.query.quizId,
         })
         .then((response) => {
-          alert("Video criado com sucesso!");
+          toast.sucess("Video criado com sucesso!");
           setDispatch(!dispatch);
         })
         .catch((err) => {
-          alert("Erro ao criar video!");
+          toast.error("Erro ao criar video!");
         });
     }
   };

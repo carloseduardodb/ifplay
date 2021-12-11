@@ -6,6 +6,7 @@ import { FiAperture } from "react-icons/fi";
 import api from "../../../../services/api";
 import { useRouter } from "next/router";
 import { useDispatchGlobalEvent } from "../../../../hooks/useDispatchGlobalEvent";
+import { toast } from "react-toastify";
 
 type Props = {
   open: boolean;
@@ -31,11 +32,11 @@ export default function CreateTeamModal() {
         quizId: router.query.quizId,
       })
       .then((response) => {
-        alert("Sucesso ao criar turma");
+        toast.success("Sucesso ao criar turma");
         setDispatch(!dispatch);
       })
       .catch((err) => {
-        alert("Erro ao criar turma");
+        toast.error("Erro ao criar turma");
       });
   };
 

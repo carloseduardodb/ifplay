@@ -6,6 +6,7 @@ import { FiAperture } from "react-icons/fi";
 import api from "../../../../services/api";
 import { useRouter } from "next/router";
 import { useDispatchGlobalEvent } from "../../../../hooks/useDispatchGlobalEvent";
+import { toast } from "react-toastify";
 
 type Props = {
   open: boolean;
@@ -49,12 +50,12 @@ export default function CreateAnswerModal() {
           question4Rp: question4Rp,
         },
       })
-      .then((response) => {
-        alert("Questão criada com sucesso");
+      .then(() => {
+        toast.success("Questão criada com sucesso");
         setDispatch(!dispatch);
       })
-      .catch((error) => {
-        alert("Error creating answer");
+      .catch(() => {
+        toast.error("Erro ao criar questão");
       });
   };
 

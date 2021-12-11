@@ -6,6 +6,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 type Alternatives = {
   id: number;
@@ -35,7 +36,7 @@ const CardsQuestions = () => {
           setQuestions(response.data);
         })
         .catch((error) => {
-          alert(error);
+          toast.error(error);
         });
   }, [router.query, dispatch]);
   return (

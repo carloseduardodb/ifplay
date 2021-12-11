@@ -9,6 +9,7 @@ import Head from "next/head";
 import api from "../../services/api";
 import { useAuth } from "../../hooks/useAuth";
 import Router from "next/router";
+import { toast } from "react-toastify";
 
 interface RegisterData {
   name: string;
@@ -27,11 +28,11 @@ const Register = () => {
     const status = await api
       .post("teacher/register", data)
       .then(() => {
-        alert("Sucesso ao realizar seu cadastro!");
+        toast.success("Sucesso ao realizar seu cadastro!");
         return true;
       })
       .catch((err: Error) => {
-        alert("Email já cadastrado no sistema!");
+        toast.error("Email já cadastrado no sistema!");
         return false;
       });
     return status;

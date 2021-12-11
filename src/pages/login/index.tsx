@@ -9,6 +9,7 @@ import getValidationsErrors from "../../utils/getValidationsErrors";
 import { useAuth } from "../../hooks/useAuth";
 import Router from "next/router";
 import { useEffect } from "react";
+import { toast } from "react-toastify";
 interface LoginData {
   email: string;
   password: string;
@@ -26,7 +27,7 @@ const Login = () => {
 
   async function login(data: LoginData) {
     await signIn(data);
-    alert("Sucesso ao fazer login");
+    toast.success("Sucesso ao fazer login");
     Router.push("/dashboard");
   }
 

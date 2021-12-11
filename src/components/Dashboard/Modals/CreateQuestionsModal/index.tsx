@@ -4,6 +4,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { HiSave } from "react-icons/hi";
 import { FiAperture } from "react-icons/fi";
 import api from "../../../../services/api";
+import { toast } from "react-toastify";
 
 type Props = {
   open: boolean;
@@ -23,10 +24,10 @@ export default function CreateQuestionsModal() {
     api
       .post("/teacher/questions", {})
       .then((response) => {
-        alert("Question created successfully");
+        toast.success("Question created successfully");
       })
       .catch((err) => {
-        alert("Error creating question");
+        toast.error("Error creating question");
       });
   };
 

@@ -7,6 +7,7 @@ import { Carousel } from "react-responsive-carousel";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { useState } from "react";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 type TeamProps = {
   id: number;
@@ -28,10 +29,9 @@ const ResponsesCardsTeams = () => {
         .get(`teacher/${router.query.playlistId}/teams`)
         .then((response) => {
           setTeams(response.data);
-          //console.log(response.data);
         })
-        .catch((error) => {
-          alert(error);
+        .catch(() => {
+          toast.error("Erro ao carregar turmas");
         });
   }, [router.query, dispatch]);
   return (

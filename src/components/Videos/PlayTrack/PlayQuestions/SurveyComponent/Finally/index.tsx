@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-toastify";
 import { usePlaylist } from "../../../../../../hooks/usePlaylist";
 import api from "../../../../../../services/api";
 
@@ -10,15 +11,24 @@ const index = () => {
 
   const handleClickSend = () => {
     if (!email || !code || !name) {
-      alert("Preencha os campos!");
+      toast.warning("Preencha todos os campos");
       return;
     }
-    api.post("questions/answer", {
-      responses,
-      email,
-      name,
-      code,
-    });
+    api
+      .post("questions/answer", {
+        responses,
+        email,
+        name,
+        code,
+      })
+      .then(({ data }) => {
+        if (data.message === "Código inválido!") {
+          toast.error(data.message);
+        } else {
+          toast.success(data.message);
+          setQuestionStatusScreen("responses");
+        }
+      });
   };
 
   return (

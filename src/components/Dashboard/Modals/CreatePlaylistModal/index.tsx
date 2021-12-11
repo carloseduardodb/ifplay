@@ -4,6 +4,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { HiSave } from "react-icons/hi";
 import api from "../../../../services/api";
 import { useDispatchGlobalEvent } from "../../../../hooks/useDispatchGlobalEvent";
+import { toast } from "react-toastify";
 
 type Props = {
   open: boolean;
@@ -21,11 +22,11 @@ export default function CreatePlaylistModal({ open, setOpen }: Props) {
         name: playlistName,
       })
       .then((data) => {
-        alert("Playlist criada com sucesso!");
+        toast.success("Playlist criada com sucesso!");
         setDispatch(!dispatch);
       })
       .catch((err) => {
-        alert("Erro ao criar playlist");
+        toast.error("Erro ao criar playlist");
       });
   };
 

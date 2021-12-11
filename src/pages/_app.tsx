@@ -9,6 +9,8 @@ import { DispatchProvider } from "../contexts/DispatchEventContext";
 import AdminLayout from "../layouts/AdminLayout";
 import DefaultLayout from "../layouts/DefaultLayout";
 import { PlaylistProvider } from "../contexts/PlaylistContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App({ Component, pageProps }) {
   const router = useRouter();
@@ -32,6 +34,7 @@ function App({ Component, pageProps }) {
               <Component {...pageProps} />
             </DefaultLayout>
           )}
+          <ToastContainer />
         </PlaylistProvider>
       </DispatchProvider>
     </AuthProvider>

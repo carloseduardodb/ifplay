@@ -135,6 +135,7 @@ export function PlaylistProvider({ children }: PlaylistContextProviderProps) {
     setIsQuestions(false);
     setQuestionStatusScreen("survey");
     setSelectPlaylist(playlist?.videos[0].url);
+    setResponses([]);
   };
 
   const verifyResponses = () => {

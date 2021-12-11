@@ -6,6 +6,7 @@ import { FiEdit3 } from "react-icons/fi";
 import api from "../../../../services/api";
 import { useRouter } from "next/router";
 import { useDispatchGlobalEvent } from "../../../../hooks/useDispatchGlobalEvent";
+import { toast } from "react-toastify";
 
 type Props = {
   open: boolean;
@@ -31,11 +32,11 @@ export default () => {
         title: name,
       })
       .then((data) => {
-        alert("Novo nome adicionado com sucesso!");
+        toast.success("Novo nome adicionado com sucesso!");
         setDispatch(!dispatch);
       })
       .catch(() => {
-        alert("Erro ao criar quiz");
+        toast.error("Erro ao criar quiz");
       });
   };
 

@@ -5,10 +5,10 @@ import { useRouter } from "next/router";
 import api from "../../../../services/api";
 
 type ResponseProps = {
-  name: string;
+  student: string;
   email: string;
-  hits: number;
-  errors: number;
+  acertos: number;
+  erros: number;
 };
 
 const index = () => {
@@ -20,8 +20,8 @@ const index = () => {
         .get(
           `/playlists/${router.query.playlistId}/teams/${router.query.teamId}/responses`
         )
-        .then((response) => {
-          setResponses(response.data);
+        .then(({ data }) => {
+          setResponses(data[0]);
         });
     }
   }, [router.query]);
@@ -61,40 +61,30 @@ const index = () => {
                   </tr>
                 </thead>
                 <tbody className="text-sm divide-y divide-gray-100">
-                  {responses !== undefined ??
-                    responses.map((response: ResponseProps) => (
-                      <tr>
-                        <td className="p-2 whitespace-nowrap">
-                          <div className="flex items-center">
-                            <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
-                              <img
-                                className="rounded-full"
-                                src="https://raw.githubusercontent.com/cruip/vuejs-admin-dashboard-template/main/src/images/user-36-05.jpg"
-                                width="40"
-                                height="40"
-                                alt="Alex Shatov"
-                              />
-                            </div>
-                            <div className="font-medium text-gray-800">
-                              {response.name}
-                            </div>
+                  {responses.map((response: ResponseProps) => (
+                    <tr key={response.email}>
+                      <td className="p-2 whitespace-nowrap">
+                        <div className="flex items-center">
+                          <div className="font-medium text-gray-800">
+                            {response.student}
                           </div>
-                        </td>
-                        <td className="p-2 whitespace-nowrap">
-                          <div className="text-left">{response.email}</div>
-                        </td>
-                        <td className="p-2 whitespace-nowrap">
-                          <div className="text-left font-medium text-green-500">
-                            {response.hits}
-                          </div>
-                        </td>
-                        <td className="p-2 whitespace-nowrap">
-                          <div className="text-lg text-center">
-                            {response.errors}
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
+                        </div>
+                      </td>
+                      <td className="p-2 whitespace-nowrap">
+                        <div className="text-left">{response.email}</div>
+                      </td>
+                      <td className="p-2 whitespace-nowrap">
+                        <div className="text-left font-medium text-green-500">
+                          {response.acertos}
+                        </div>
+                      </td>
+                      <td className="p-2 whitespace-nowrap">
+                        <div className="text-lg text-center">
+                          {response.erros}
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>

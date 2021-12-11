@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import DetailsVideoList from "./DetailsVideoList";
 import DetailsQuestions from "./DetailsQuestions";
-import api from "../../../../services/api";
-import { AxiosResponse } from "axios";
 import { useRouter } from "next/router";
 import { usePlaylist } from "../../../../hooks/usePlaylist";
 
@@ -13,10 +11,14 @@ const ListVideos = () => {
   const [select, setSelect] = React.useState("");
 
   return (
-    <ul className="w-4/12 overflow-hidden scrollbar scrollbar-thumb-p-green scrollbar-thin scrollbar-track-gray-800">
+    <ul
+      className="w-4/12 overflow-hidden scrollbar scrollbar-thumb-p-green scrollbar-thin max-h-80 scrollbar-track-gray-800"
+      style={{ maxHeight: "80%" }}
+    >
       {playlist?.videos?.map((video) => (
-        <DetailsVideoList url={video.url} />
+        <DetailsVideoList key={video.id} url={video.url} />
       ))}
+      <DetailsQuestions />
     </ul>
   );
 };

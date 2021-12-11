@@ -23,18 +23,29 @@ export default function CreateVideosModal() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setOpen(false);
-    api
-      .post("/teacher/videos", {
-        url: url,
-        playlistId: router.query.quizId,
-      })
-      .then((response) => {
-        alert("Video criado com sucesso!");
-        setDispatch(!dispatch);
-      })
-      .catch((err) => {
-        alert("Erro ao criar video!");
-      });
+    /* verificar se a url é do youtube */
+    const regex =
+      /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+    const match = url.match(regex);
+    if (!match) {
+      alert("url inválida");
+      return;
+    }
+
+    if (url.length > 0) {
+      api
+        .post("/teacher/videos", {
+          url: url,
+          playlistId: router.query.quizId,
+        })
+        .then((response) => {
+          alert("Video criado com sucesso!");
+          setDispatch(!dispatch);
+        })
+        .catch((err) => {
+          alert("Erro ao criar video!");
+        });
+    }
   };
 
   return (

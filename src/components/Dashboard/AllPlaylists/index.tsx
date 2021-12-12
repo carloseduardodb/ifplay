@@ -18,7 +18,7 @@ type Props = {
 
 const AllPlaylists = () => {
   const [playlists, setPlaylists] = React.useState<Props[]>([]);
-  const { dispatch } = useDispatchGlobalEvent();
+  const { dispatch, setDispatch } = useDispatchGlobalEvent();
   useEffect(() => {
     api
       .get("teacher/count-items")

@@ -2,10 +2,8 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 // components
-
-import TableDropdown from "../TableDropdown";
-import { FiUser } from "react-icons/fi";
-import { FaCircle, FaEye, FaUserCircle } from "react-icons/fa";
+import { FiX } from "react-icons/fi";
+import { FaCheck } from "react-icons/fa";
 import { useDispatchGlobalEvent } from "../../../hooks/useDispatchGlobalEvent";
 import api from "../../../services/api";
 
@@ -26,15 +24,30 @@ type StatsProps = {
   answersCount: number;
   lastResponses: lastResponse[];
 };
+
+type ResponseProps = {
+  student: string;
+  email: string;
+  acertos: number;
+  erros: number;
+};
+
 export default function CardTable({ color }) {
   const { dispatch, setDispatch } = useDispatchGlobalEvent();
   const [stats, setStats] = React.useState<StatsProps>({} as StatsProps);
+  const [responses, setResponses] = React.useState([]);
 
   useEffect(() => {
     api.get("/teacher/items/count").then((response) => {
       setStats(response.data);
     });
   }, [dispatch]);
+
+  useEffect(() => {
+    api.get("/playlists/teams/responses/last").then(({ data }) => {
+      setResponses(data[0]);
+    });
+  }, []);
 
   return (
     <>
@@ -50,7 +63,7 @@ export default function CardTable({ color }) {
               <h3
                 className={
                   "font-semibold text-lg " +
-                  (color === "light" ? "text-blueGray-700" : "text-white")
+                  (color === "light" ? "" : "text-white")
                 }
               >
                 Últimas Respostas
@@ -65,10 +78,7 @@ export default function CardTable({ color }) {
               <tr>
                 <th
                   className={
-                    "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
-                    (color === "light"
-                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
-                      : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
+                    "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left "
                   }
                 >
                   Nomes
@@ -103,54 +113,35 @@ export default function CardTable({ color }) {
                 >
                   Erros
                 </th>
-                <th
-                  className={
-                    "px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left " +
-                    (color === "light"
-                      ? "bg-blueGray-50 text-blueGray-500 border-blueGray-100"
-                      : "bg-blueGray-600 text-blueGray-200 border-blueGray-500")
-                  }
-                >
-                  Ação
-                </th>
               </tr>
             </thead>
-            <tbody>
-              {stats.lastResponses !== undefined ??
-                stats.lastResponses.map((lastResponse) => {
-                  <tr>
-                    <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
-                      <span className="h-12 w-12 bg-blue-400 rounded-full border flex justify-center items-center">
-                        <FaUserCircle size={35} />
-                      </span>
-                      <span
-                        className={
-                          "ml-3 font-bold " +
-                          +(color === "light"
-                            ? "text-blueGray-600"
-                            : "text-white")
-                        }
-                      >
-                        {lastResponse.name}
-                      </span>
-                    </th>
-                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      {lastResponse.email}
-                    </td>
-                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      <div className="flex">
-                        <FaCircle color="green" className="mr-2" />{" "}
-                        <span>{lastResponse.hits}</span>
+            <tbody className="text-sm divide-y divide-gray-100">
+              {responses.map((response: ResponseProps) => (
+                <tr key={response.email}>
+                  <td className="p-2 whitespace-nowrap">
+                    <div className="flex items-center">
+                      <div className="font-medium text-gray-800 px-4">
+                        {response.student}
                       </div>
-                    </td>
-                    <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                      <div className="flex">
-                        <FaCircle color="red" className="mr-2" />{" "}
-                        <span>{lastResponse.errors}</span>
-                      </div>
-                    </td>
-                  </tr>;
-                })}
+                    </div>
+                  </td>
+                  <td className="p-2 whitespace-nowrap">
+                    <div className="text-left px-4">{response.email}</div>
+                  </td>
+                  <td className="p-2 whitespace-nowrap">
+                    <div className="text-lg font-medium text-green-500 px-4 flex items-center gap-x-1">
+                      {response.acertos}
+                      <FaCheck size={18} />
+                    </div>
+                  </td>
+                  <td className="p-2 whitespace-nowrap">
+                    <div className="text-lg px-4 text-red-500 flex items-center gap-x-1">
+                      {response.erros}
+                      <FiX size={18} />
+                    </div>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

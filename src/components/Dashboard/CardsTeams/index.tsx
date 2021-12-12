@@ -7,6 +7,7 @@ import { Carousel } from "react-responsive-carousel";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import UniqueRender from "./UniqueRender";
 
 type TeamProps = {
   id: number;
@@ -39,6 +40,7 @@ const CardsTeams = () => {
       <br />
       <div className={`mt-5 relative ${teams.length > 2 && "justify-center"}`}>
         <Carousel
+          showThumbs={false}
           centerMode
           centerSlidePercentage={33.33}
           showIndicators={false}
@@ -75,38 +77,7 @@ const CardsTeams = () => {
           )}
         >
           {teams.map((team) => (
-            <div key={team.id}>
-              <div className="bg-white rounded-md p-5 mb-10 w-96 text-left">
-                <label htmlFor="" className="font-semibold">
-                  Nome da turma:
-                </label>
-                <p>{team.name}</p>
-                <br />
-                <label htmlFor="" className="font-semibold">
-                  Código da turma:
-                </label>
-                <p>{team.code}</p>
-                <br />
-                <div className="flex justify-end">
-                  <button
-                    className="w-full inline-flex justify-center rounded-md border 
-                          border-transparent shadow-sm px-4 py-2 bg-p-blue text-base font-medium 
-                        text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 
-                        focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
-                  >
-                    Editar
-                  </button>
-                  <button
-                    className="w-full inline-flex justify-center rounded-md border 
-                          border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium 
-                        text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 
-                        focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
-                  >
-                    Apagar
-                  </button>
-                </div>
-              </div>
-            </div>
+            <UniqueRender key={team.id} team={team} />
           ))}
         </Carousel>
       </div>

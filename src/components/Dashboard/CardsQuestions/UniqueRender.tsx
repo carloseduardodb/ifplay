@@ -17,7 +17,7 @@ const UniqueRender = ({ question }) => {
   };
   return (
     <div key={question.id}>
-      <div className="bg-white rounded-md p-5 mb-10 w-96 text-left">
+      <div className="bg-white rounded-md p-5 mb-10 mx-2 text-left max-h-72 overflow-y-scroll">
         <label htmlFor="" className="font-semibold">
           Titulo da questão
         </label>
@@ -32,14 +32,14 @@ const UniqueRender = ({ question }) => {
             <p
               key={alternative.id}
               className={`${
-                alternative.is_response ?? "font-bold text-green-700"
+                alternative.is_response && "font-bold text-green-700"
               }`}
             >
               {alternative.title}
             </p>
           );
         })}
-        <div className="flex justify-end">
+        <div className="flex justify-end mt-5">
           <DeleteModal handleSubmit={handleDelete} />
         </div>
       </div>

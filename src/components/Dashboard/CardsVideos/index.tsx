@@ -7,12 +7,14 @@ import { Carousel } from "react-responsive-carousel";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import UniqueRender from "./UniqueRender";
 
 type VideoProps = {
   id: number;
   playlist_id: number;
   url: string;
   views: number;
+  title: string;
 };
 
 const CardsVideos = () => {
@@ -32,12 +34,14 @@ const CardsVideos = () => {
           toast.error("Erro ao carregar os vídeos");
         });
   }, [router.query, dispatch]);
+
   return (
     <div className="">
       <h2 className="text-2xl text-white font-bold">Videos Cadastrados</h2>
       <br />
       <div className={`mt-5 relative ${videos.length > 2 && "justify-center"}`}>
         <Carousel
+          showThumbs={false}
           centerMode
           centerSlidePercentage={100 / 3}
           showIndicators={false}
@@ -74,40 +78,7 @@ const CardsVideos = () => {
           )}
         >
           {videos.map((video) => (
-            <div key={video.id}>
-              <div className="bg-white rounded-md p-5 mb-10 w-96 text-left">
-                <label htmlFor="" className="font-semibold">
-                  Nome do video
-                </label>
-                <p>Ainda indefinido</p>
-                <br />
-                <label htmlFor="" className="font-semibold">
-                  Url:
-                </label>
-                <br />
-                <a className="text-blue-500" href={video.url}>
-                  {video.url}
-                </a>
-                <div className="flex justify-end">
-                  <button
-                    className="w-full inline-flex justify-center rounded-md border 
-                        border-transparent shadow-sm px-4 py-2 bg-p-blue text-base font-medium 
-                      text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 
-                      focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
-                  >
-                    Editar
-                  </button>
-                  <button
-                    className="w-full inline-flex justify-center rounded-md border 
-                        border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium 
-                      text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 
-                      focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
-                  >
-                    Apagar
-                  </button>
-                </div>
-              </div>
-            </div>
+            <UniqueRender key={video.id} video={video} />
           ))}
         </Carousel>
       </div>

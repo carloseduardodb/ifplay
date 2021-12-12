@@ -34,7 +34,7 @@ const UniqueRender = ({ team }) => {
         <p>{team.code}</p>
         <br />
         <div className="flex justify-end">
-          <EditTeamModal />
+          <EditTeamModal team={team} />
           <DeleteModal handleSubmit={handleSubmit} />
         </div>
       </div>

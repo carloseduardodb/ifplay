@@ -40,7 +40,7 @@ export default function CreateVideosModal() {
           playlistId: router.query.quizId,
         })
         .then((response) => {
-          toast.sucess("Video criado com sucesso!");
+          toast.success("Video criado com sucesso!");
           setDispatch(!dispatch);
         })
         .catch((err) => {

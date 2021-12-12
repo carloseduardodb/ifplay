@@ -22,7 +22,7 @@ const UniqueRender = ({ team }) => {
 
   return (
     <div key={team.id}>
-      <div className="bg-white rounded-md p-5 mb-10 w-96 text-left">
+      <div className="bg-white rounded-md p-5 mb-10 mx-3 text-left">
         <label htmlFor="" className="font-semibold">
           Nome da turma:
         </label>

@@ -13,7 +13,7 @@ type Props = {
   setOpen: (open: boolean) => void;
 };
 
-export default function EditVideoNameModal() {
+export default function EditVideoNameModal({ video }) {
   const cancelButtonRef = useRef(null);
   const { dispatch, setDispatch } = useDispatchGlobalEvent();
   const [open, setOpen] = useState(false);
@@ -35,16 +35,16 @@ export default function EditVideoNameModal() {
 
     if (url.length > 0) {
       api
-        .post("/teacher/videos", {
+        .put(`/teacher/playlist/video/${video.id}`, {
           url: url,
           playlistId: router.query.quizId,
         })
         .then((response) => {
-          toast.success("Video criado com sucesso!");
+          toast.success("Link do video editado com sucesso!");
           setDispatch(!dispatch);
         })
         .catch((err) => {
-          toast.error("Erro ao criar video!");
+          toast.error("Erro ao editar link do video!");
         });
     }
   };

@@ -1,6 +1,26 @@
 import React from "react";
+import { toast } from "react-toastify";
+import DeleteAccountModal from "../../../components/Dashboard/Modals/DeleteAccountModal";
+import api from "../../../services/api";
+import { useRouter } from "next/router";
+import { useAuth } from "../../../hooks/useAuth";
 
 const Settings = () => {
+  const { push } = useRouter();
+  const { signOut } = useAuth();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    api
+      .delete("/teacher")
+      .then((res) => {
+        toast.success(res.data.message);
+        signOut();
+        push("/");
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message);
+      });
+  };
   return (
     <div className="mt-28 mb-28 px-40">
       <h2 className="text-2xl text-white font-bold">Configurações</h2>
@@ -30,9 +50,7 @@ const Settings = () => {
               </p>
             </div>
           </div>
-          <button className="flex-no-shrink bg-red-500 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-full">
-            Apagar
-          </button>
+          <DeleteAccountModal handleSubmit={handleSubmit} />
         </div>
       </div>
     </div>

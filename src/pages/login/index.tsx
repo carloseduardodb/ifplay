@@ -26,9 +26,14 @@ const Login = () => {
   }, []);
 
   async function login(data: LoginData) {
-    await signIn(data);
-    toast.success("Sucesso ao fazer login");
-    Router.push("/dashboard");
+    await signIn(data)
+      .then(() => {
+        toast.success("Sucesso ao fazer login");
+        Router.push("/dashboard");
+      })
+      .catch(() => {
+        toast.error("Erro ao fazer login - Verifique suas credenciais");
+      });
   }
 
   async function handleSubmit(data: LoginData, { reset }) {

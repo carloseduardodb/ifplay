@@ -52,14 +52,14 @@ const CardsQuestions = () => {
         <Carousel
           showThumbs={false}
           centerMode
-          centerSlidePercentage={33.33}
+          centerSlidePercentage={50.0}
           showIndicators={false}
           width="100%"
           selectedItem={currentIndex}
           showStatus={false}
           renderArrowPrev={(onClickHandler, hasPrev, label) => (
             <button
-              className={`bg-p-green absolute bottom-14 z-10 left-2 hover:bg-p-green text-white font-semibold hover:text-white py-3 px-1 border border-p-green hover:border-transparent rounded ${
+              className={`bg-p-green absolute bottom-36 z-10 left-2 hover:bg-p-green text-white font-semibold hover:text-white py-3 px-1 border border-p-green hover:border-transparent rounded ${
                 !hasPrev && "hidden"
               }`}
               onClick={() => {
@@ -75,7 +75,7 @@ const CardsQuestions = () => {
           )}
           renderArrowNext={(onClickHandler, hasNext, label) => (
             <button
-              className={`bg-p-green absolute bottom-14 right-2 hover:bg-p-green text-white font-semibold hover:text-white py-3 px-1 border border-p-green hover:border-transparent rounded ${
+              className={`bg-p-green absolute bottom-36 right-2 hover:bg-p-green text-white font-semibold hover:text-white py-3 px-1 border border-p-green hover:border-transparent rounded ${
                 !hasNext && "hidden"
               }`}
               onClick={() => {

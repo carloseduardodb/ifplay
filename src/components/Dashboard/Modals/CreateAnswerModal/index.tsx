@@ -128,9 +128,8 @@ export default function CreateAnswerModal() {
                       <div className="mt-2 w-96">
                         <input
                           onChange={(e) => {
-                            setQuestion1(e.target.value);
+                            setTitle(e.target.value);
                           }}
-                          value="Teste"
                           id="playlist-name"
                           name="playlist-name"
                           type="text"
@@ -154,9 +153,8 @@ export default function CreateAnswerModal() {
                             <div className="flex items-center">
                               <input
                                 onChange={(e) => {
-                                  setQuestion2(e.target.value);
+                                  setQuestion1(e.target.value);
                                 }}
-                                value="Teste"
                                 id="playlist-name"
                                 name="playlist-name"
                                 type="text"
@@ -165,7 +163,7 @@ export default function CreateAnswerModal() {
                                 placeholder="Resposta"
                               />
                               <input
-                                onChange={() => setQuestion1Rp(!question1Rp)}
+                                onClick={() => setQuestion1Rp(!question1Rp)}
                                 type="checkbox"
                                 className="ml-2"
                               />
@@ -183,10 +181,9 @@ export default function CreateAnswerModal() {
                             <div className="flex items-center">
                               <input
                                 onChange={(e) => {
-                                  setQuestion3(e.target.value);
+                                  setQuestion2(e.target.value);
                                 }}
                                 id="playlist-name"
-                                value="Teste"
                                 name="playlist-name"
                                 type="text"
                                 required
@@ -194,7 +191,7 @@ export default function CreateAnswerModal() {
                                 placeholder="Resposta"
                               />
                               <input
-                                onChange={() => setQuestion2Rp(!question2Rp)}
+                                onClick={() => setQuestion2Rp(!question2Rp)}
                                 type="checkbox"
                                 className="ml-2"
                               />
@@ -212,10 +209,9 @@ export default function CreateAnswerModal() {
                             <div className="flex items-center">
                               <input
                                 onChange={(e) => {
-                                  setQuestion4(e.target.value);
+                                  setQuestion3(e.target.value);
                                 }}
                                 id="playlist-name"
-                                value="Teste"
                                 name="playlist-name"
                                 type="text"
                                 required
@@ -223,7 +219,7 @@ export default function CreateAnswerModal() {
                                 placeholder="Resposta"
                               />
                               <input
-                                onChange={() => setQuestion3Rp(!question3Rp)}
+                                onClick={() => setQuestion3Rp(!question3Rp)}
                                 type="checkbox"
                                 className="ml-2"
                               />
@@ -241,10 +237,9 @@ export default function CreateAnswerModal() {
                             <div className="flex items-center">
                               <input
                                 onChange={(e) => {
-                                  setTitle(e.target.value);
+                                  setQuestion4(e.target.value);
                                 }}
                                 id="playlist-name"
-                                value="Teste"
                                 name="playlist-name"
                                 type="text"
                                 required
@@ -252,10 +247,9 @@ export default function CreateAnswerModal() {
                                 placeholder="Resposta"
                               />
                               <input
-                                onChange={() => setQuestion4Rp(!question4Rp)}
+                                onClick={() => setQuestion4Rp(!question4Rp)}
                                 type="checkbox"
                                 className="ml-2"
-                                checked
                               />
                             </div>
                             <br />

@@ -2,7 +2,6 @@ import React from "react";
 import DeleteModal from "../Modals/DeleteModal/index";
 import api from "../../../services/api";
 import { toast } from "react-toastify";
-import EditAnswerModal from "../Modals/EditAnswerModal/index";
 
 const UniqueRender = ({ question }) => {
   const handleDelete = (event) => {
@@ -41,7 +40,6 @@ const UniqueRender = ({ question }) => {
           );
         })}
         <div className="flex justify-end">
-          <EditAnswerModal />
           <DeleteModal handleSubmit={handleDelete} />
         </div>
       </div>

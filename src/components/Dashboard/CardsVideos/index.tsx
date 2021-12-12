@@ -43,14 +43,14 @@ const CardsVideos = () => {
         <Carousel
           showThumbs={false}
           centerMode
-          centerSlidePercentage={100 / 3}
+          centerSlidePercentage={100 / 2}
           showIndicators={false}
           width="100%"
           selectedItem={currentIndex}
           showStatus={false}
           renderArrowPrev={(onClickHandler, hasPrev, label) => (
             <button
-              className={`bg-p-green absolute bottom-14 z-10 left-2 hover:bg-p-green text-white font-semibold hover:text-white py-3 px-1 border border-p-green hover:border-transparent rounded ${
+              className={`bg-p-green absolute bottom-32 z-10 left-2 hover:bg-p-green text-white font-semibold hover:text-white py-3 px-1 border border-p-green hover:border-transparent rounded ${
                 !hasPrev && "hidden"
               }`}
               onClick={() => {
@@ -64,7 +64,7 @@ const CardsVideos = () => {
           )}
           renderArrowNext={(onClickHandler, hasNext, label) => (
             <button
-              className={`bg-p-green absolute bottom-14 right-2 hover:bg-p-green text-white font-semibold hover:text-white py-3 px-1 border border-p-green hover:border-transparent rounded ${
+              className={`bg-p-green absolute bottom-32 right-2 hover:bg-p-green text-white font-semibold hover:text-white py-3 px-1 border border-p-green hover:border-transparent rounded ${
                 !hasNext && "hidden"
               }`}
               onClick={() => {

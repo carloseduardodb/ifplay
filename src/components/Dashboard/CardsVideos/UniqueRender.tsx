@@ -41,14 +41,14 @@ const UniqueRender = ({ video }) => {
       .then((res) => res.json())
       .then((data) => {
         console.log("aqui");
-        /*if (data !== undefined && data.items[0])
-          setVideoTitle(data.items[0].snippet.title);*/
+        if (data !== undefined && data.items[0])
+          setVideoTitle(data.items[0].snippet.title);
       });
   }, []);
 
   return (
-    <div key={video.id}>
-      <div className="bg-white rounded-md p-5 mb-10 w-96 text-left">
+    <div key={video.id} className="mx-3">
+      <div className="bg-white rounded-md p-5 mb-10 text-left">
         <label htmlFor="" className="font-semibold">
           Nome do video
         </label>
@@ -59,9 +59,9 @@ const UniqueRender = ({ video }) => {
         </label>
         <br />
         <a className="text-blue-500" href={video.url}>
-          {video.url}
+          {video.url.slice(0, 55)}...
         </a>
-        <div className="flex justify-end">
+        <div className="flex justify-end mt-5">
           <EditVideoNameModal video={video} />
           <DeleteModal handleSubmit={handleSubmit} />
         </div>

@@ -61,7 +61,7 @@ const index = () => {
                 }}
                 className="bg-white flex justify-between items-center p-4 rounded-2xl transform hover:scale-x-105 hover:bg-p-green hover:text-white cursor-pointer transition-transform ease-in-out duration-300"
               >
-                <p>{alternative.is_response}</p>
+                <p>{alternative.title}</p>
                 {response.alternaId === alternative.id && (
                   <FiCheck size={23} className="text-p-green-dark" />
                 )}

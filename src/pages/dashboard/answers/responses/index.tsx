@@ -30,7 +30,10 @@ const index = () => {
     <section className="antialiased bg-p-black-dark text-gray-600 h-screen px-4">
       <div className="flex flex-col justify-center h-full relative">
         <Link href="/dashboard/answers">
-          <a className="bg-p-green p-5 rounded-full absolute left-0">
+          <a
+            className="bg-p-green p-5 rounded-full left-0"
+            style={{ width: "max-content" }}
+          >
             <FiChevronsLeft size={30} className="text-white" />
           </a>
         </Link>

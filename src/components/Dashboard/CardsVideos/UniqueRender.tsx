@@ -62,7 +62,7 @@ const UniqueRender = ({ video }) => {
           {video.url}
         </a>
         <div className="flex justify-end">
-          <EditVideoNameModal />
+          <EditVideoNameModal video={video} />
           <DeleteModal handleSubmit={handleSubmit} />
         </div>
       </div>

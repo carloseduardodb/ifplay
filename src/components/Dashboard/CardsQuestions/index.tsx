@@ -7,6 +7,7 @@ import { Carousel } from "react-responsive-carousel";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import UniqueRender from "./UniqueRender";
 
 type Alternatives = {
   id: number;
@@ -25,7 +26,7 @@ type QuestionProps = {
 const CardsQuestions = () => {
   const [questions, setQuestions] = React.useState<QuestionProps[]>([]);
   const router = useRouter();
-  const { dispatch } = useDispatchGlobalEvent();
+  const { dispatch, setDispatch } = useDispatchGlobalEvent();
   const [currentIndex, setSlide] = useState(0);
 
   useEffect(() => {
@@ -34,11 +35,13 @@ const CardsQuestions = () => {
         .get(`teacher/${router.query.quizId}/questions`)
         .then((response) => {
           setQuestions(response.data);
+          setDispatch(!dispatch);
         })
         .catch((error) => {
           toast.error(error);
         });
   }, [router.query, dispatch]);
+
   return (
     <div className="">
       <h2 className="text-2xl text-white font-bold">Questões Cadastradas</h2>
@@ -47,6 +50,7 @@ const CardsQuestions = () => {
         className={`mt-5 relative ${questions.length > 2 && "justify-center"}`}
       >
         <Carousel
+          showThumbs={false}
           centerMode
           centerSlidePercentage={33.33}
           showIndicators={false}
@@ -85,49 +89,7 @@ const CardsQuestions = () => {
           )}
         >
           {questions.map((question) => (
-            <div key={question.id}>
-              <div className="bg-white rounded-md p-5 mb-10 w-96 text-left">
-                <label htmlFor="" className="font-semibold">
-                  Titulo da questão
-                </label>
-                <p>{question.title}</p>
-                <br />
-                <label htmlFor="" className="font-semibold">
-                  Alternativas
-                </label>
-                <br />
-                {question.alternatives.map((alternative) => {
-                  return (
-                    <p
-                      key={alternative.id}
-                      className={`${
-                        alternative.is_response ?? "font-bold text-green-700"
-                      }`}
-                    >
-                      {alternative.title}
-                    </p>
-                  );
-                })}
-                <div className="flex justify-end">
-                  <button
-                    className="w-full inline-flex justify-center rounded-md border 
-                        border-transparent shadow-sm px-4 py-2 bg-p-blue text-base font-medium 
-                      text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 
-                      focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
-                  >
-                    Editar
-                  </button>
-                  <button
-                    className="w-full inline-flex justify-center rounded-md border 
-                        border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium 
-                      text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 
-                      focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
-                  >
-                    Apagar
-                  </button>
-                </div>
-              </div>
-            </div>
+            <UniqueRender key={question.id} question={question} />
           ))}
         </Carousel>
       </div>

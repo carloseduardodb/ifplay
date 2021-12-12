@@ -13,7 +13,7 @@ type Props = {
   setOpen: (open: boolean) => void;
 };
 
-export default function EditTeamModal() {
+export default function EditTeamModal({ team }) {
   const cancelButtonRef = useRef(null);
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
@@ -27,16 +27,15 @@ export default function EditTeamModal() {
     e.preventDefault();
     setOpen(false);
     api
-      .post("/teacher/teams", {
+      .put(`/teacher/playlist/team/${team.id}`, {
         name: name,
-        quizId: router.query.quizId,
       })
       .then((response) => {
-        toast.success("Sucesso ao criar turma");
+        toast.success("Sucesso ao editar turma");
         setDispatch(!dispatch);
       })
       .catch((err) => {
-        toast.error("Erro ao criar turma");
+        toast.error("Erro ao editar turma");
       });
   };
 
@@ -106,12 +105,8 @@ export default function EditTeamModal() {
                         as="h3"
                         className="text-lg leading-6 font-medium text-gray-900"
                       >
-                        Digite o nome da turma
+                        Digite o novo nome da turma
                       </Dialog.Title>
-                      <h6 className="text-xs text-gray-600">
-                        Cada turma recebe um código para envio dos
-                        questionários.
-                      </h6>
                       <div className="mt-2">
                         <input
                           onChange={(e) => {

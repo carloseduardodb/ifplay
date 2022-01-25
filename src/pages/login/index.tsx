@@ -52,7 +52,7 @@ const Login = () => {
       await schema.validate(data, {
         abortEarly: false,
       });
-      const status = await login(data);
+      const status: any = await login(data);
       status && reset();
     } catch (err) {
       if (err instanceof Yup.ValidationError) {

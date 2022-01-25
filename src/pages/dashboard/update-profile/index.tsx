@@ -90,7 +90,7 @@ const UpdateProfile = () => {
                   </div>
                   <div className="flex justify-end w-full">
                     <button
-                      onClick={handleSubmitUpdateEmail}
+                      onClick={() => handleSubmitUpdateEmail}
                       className="appearance-none bg-p-green text-gray-900 px-3 py-2 shadow-sm border border-gray-400 rounded-md mr-3 transform hover:scale-x-105"
                       type="submit"
                     >
@@ -137,7 +137,7 @@ const UpdateProfile = () => {
                   </div>
                   <div className="flex justify-end w-full">
                     <button
-                      onClick={handleSubmitUpdatePassword}
+                      onClick={() => handleSubmitUpdatePassword}
                       className="appearance-none bg-red-500 text-gray-100 px-3 py-2 shadow-sm border border-gray-400 rounded-md mr-3 transform hover:scale-x-105"
                       type="submit"
                     >

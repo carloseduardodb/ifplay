@@ -69,9 +69,13 @@ const Register = () => {
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~])[A-Za-z\d!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]{8,}$/,
             "Deve conter 8 caracteres, uma maiúscula, uma minúscula, um número e um caractere especial"
           ),
-        repeatPassword: Yup.string().equalTo(
-          Yup.ref("password"),
-          "As senhas devem ser iguais!"
+        // eslint-disable-next-line no-useless-escape
+        repeatPassword: Yup.mixed().test(
+          "match",
+          "As senhas devem ser iguais",
+          function (value) {
+            return this.parent.password === value;
+          }
         ),
       });
       await schema.validate(data, {

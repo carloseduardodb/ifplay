@@ -35,7 +35,6 @@ const CardsQuestions = () => {
         .get(`teacher/${router.query.quizId}/questions`)
         .then((response) => {
           setQuestions(response.data);
-          setDispatch(!dispatch);
         })
         .catch((error) => {
           toast.error(error);

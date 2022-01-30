@@ -2,14 +2,18 @@ import React from "react";
 import DeleteModal from "../Modals/DeleteModal/index";
 import api from "../../../services/api";
 import { toast } from "react-toastify";
+import { useDispatchGlobalEvent } from "../../../hooks/useDispatchGlobalEvent";
 
 const UniqueRender = ({ question }) => {
+  const { setDispatch, dispatch } = useDispatchGlobalEvent();
+
   const handleDelete = (event) => {
     event.preventDefault();
     api
       .delete(`teacher/playlist/question/${question.id}`)
       .then((response) => {
         toast.success("Sucesso ao apagar item!");
+        setDispatch(!dispatch);
       })
       .catch((error) => {
         toast.error(error);

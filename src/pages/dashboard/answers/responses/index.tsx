@@ -3,6 +3,7 @@ import { FiChevronsLeft } from "react-icons/fi";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import api from "../../../../services/api";
+import { toast } from "react-toastify";
 
 type ResponseProps = {
   student: string;
@@ -22,6 +23,9 @@ const index = () => {
         )
         .then(({ data }) => {
           setResponses(data[0]);
+        })
+        .catch((error) => {
+          toast.error(error);
         });
     }
   }, [router.query]);

@@ -6,6 +6,7 @@ import { FiX } from "react-icons/fi";
 import { FaCheck } from "react-icons/fa";
 import { useDispatchGlobalEvent } from "../../../hooks/useDispatchGlobalEvent";
 import api from "../../../services/api";
+import { toast } from "react-toastify";
 
 type lastResponse = {
   name: string;
@@ -38,15 +39,25 @@ export default function CardTable({ color }) {
   const [responses, setResponses] = React.useState([]);
 
   useEffect(() => {
-    api.get("/teacher/items/count").then((response) => {
-      setStats(response.data);
-    });
+    api
+      .get("/teacher/items/count")
+      .then((response) => {
+        setStats(response.data);
+      })
+      .catch(() => {
+        console.log("error");
+      });
   }, [dispatch]);
 
   useEffect(() => {
-    api.get("/playlists/teams/responses/last").then(({ data }) => {
-      setResponses(data[0]);
-    });
+    api
+      .get("/playlists/teams/responses/last")
+      .then(({ data }) => {
+        setResponses(data[0]);
+      })
+      .catch((err) => {
+        toast.error(err);
+      });
   }, []);
 
   return (

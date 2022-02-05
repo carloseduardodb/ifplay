@@ -3,7 +3,7 @@ import Navbar from "../../../components/Videos/Navbar";
 import Footer from "../../../components/UI/Footer/index";
 import InfiniteVideos from "../../../components/Videos/InfiniteVideos";
 import PlayTrack from "../../../components/Videos/PlayTrack/index";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 const index = () => {
   useEffect(() => {

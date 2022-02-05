@@ -8,12 +8,13 @@ const Footer = () => {
           <h2 className="text-3xl text-white text-center">
             Investir em conhecimento rende <br /> sempre os melhores juros!
           </h2>
-          <button
+          <a
+            href="mailto:carloseduardodiasbatista@gmail.com"
             style={{ height: "max-content" }}
             className="px-8 py-4 rounded-l-full rounded-br-full bg-p-green text-white shadow-2xl hover:shadow-lg hover:opacity-95"
           >
             Contate-nos
-          </button>
+          </a>
         </div>
         <hr className="my-10" />
         <div className="py-5 gap-y-5 md:py-10 flex flex-col md:flex-row justify-between items-center">

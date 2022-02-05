@@ -26,7 +26,14 @@ const Student = () => {
             <span className="text-p-green font-bold mr-2">4º</span> Volte a
             assistir de onde parou quando voltar.
           </li>
-          <Link href="videos">
+          <Link
+            href={{
+              pathname: "./playlists",
+              query: {
+                entryMode: "seeAllVideos",
+              },
+            }}
+          >
             <div className="text-center">
               <button className="bg-p-green mt-10 rounded px-5 py-3 hover:bg-opacity-80 transition-all">
                 Quero começar a estudar

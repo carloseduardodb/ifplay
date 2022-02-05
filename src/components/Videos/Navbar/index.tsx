@@ -1,8 +1,11 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { FiChevronLeft, FiSearch } from "react-icons/fi";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
+  const { query } = useRouter();
+
   return (
     <nav className="flex justify-center items-center w-full">
       <div className="container flex justify-between items-center">
@@ -15,6 +18,7 @@ const Navbar = () => {
             className="py-1 rounded-r-lg font-normal text-base bg-transparent outline-none focus:border-transparent w-full"
             type="text"
             placeholder="Pesquisar"
+            value={query.q && query.q}
           />
         </div>
         <Link href="/">

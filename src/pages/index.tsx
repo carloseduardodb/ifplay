@@ -12,7 +12,7 @@ import YouWantCookies from "../components/UI/YouWantCookies";
 
 export default function Home() {
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center overflow-x-hidden">
       <div className="px-10">
         <Head>
           <title>IF (PLAY)</title>

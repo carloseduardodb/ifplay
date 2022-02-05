@@ -11,6 +11,7 @@ import DefaultLayout from "../layouts/DefaultLayout";
 import { PlaylistProvider } from "../contexts/PlaylistContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { SearchProvider } from "../contexts/SearchContext";
 
 function App({ Component, pageProps }) {
   const router = useRouter();
@@ -23,20 +24,22 @@ function App({ Component, pageProps }) {
   //display dashboard
   return (
     <AuthProvider>
-      <DispatchProvider>
-        <PlaylistProvider>
-          {router.pathname.includes("dashboard") ? (
-            <AdminLayout>
-              <Component {...pageProps} />
-            </AdminLayout>
-          ) : (
-            <DefaultLayout>
-              <Component {...pageProps} />
-            </DefaultLayout>
-          )}
-          <ToastContainer />
-        </PlaylistProvider>
-      </DispatchProvider>
+      <SearchProvider>
+        <DispatchProvider>
+          <PlaylistProvider>
+            {router.pathname.includes("dashboard") ? (
+              <AdminLayout>
+                <Component {...pageProps} />
+              </AdminLayout>
+            ) : (
+              <DefaultLayout>
+                <Component {...pageProps} />
+              </DefaultLayout>
+            )}
+            <ToastContainer />
+          </PlaylistProvider>
+        </DispatchProvider>
+      </SearchProvider>
     </AuthProvider>
   );
 }

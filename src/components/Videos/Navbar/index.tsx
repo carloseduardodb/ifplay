@@ -1,10 +1,12 @@
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React from "react";
 import { FiChevronLeft, FiSearch } from "react-icons/fi";
+import { useSearch } from "../../../hooks/useSearch";
 import { useRouter } from "next/router";
 
 const Navbar = () => {
-  const { query } = useRouter();
+  const { search, setSearch } = useSearch();
+  const { push, query } = useRouter();
 
   return (
     <nav className="flex justify-center items-center w-full">
@@ -18,7 +20,13 @@ const Navbar = () => {
             className="py-1 rounded-r-lg font-normal text-base bg-transparent outline-none focus:border-transparent w-full"
             type="text"
             placeholder="Pesquisar"
-            value={query.q && query.q}
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              if (!query.entryMode) {
+                push(`/playlists?entryMode=seeAllVideos`);
+              }
+            }}
           />
         </div>
         <Link href="/">

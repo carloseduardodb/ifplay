@@ -24,7 +24,7 @@ const RecentTracks = () => {
   }, []);
   return (
     <>
-      <h2 className="text-white text-3xl font-bold my-3">
+      <h2 className="text-white text-3xl font-bold my-3" id="category">
         Trilhas recentes{" "}
         <span className="h-0.5 w-32 bg-p-yellow absolute mt-5 ml-5"></span>
       </h2>

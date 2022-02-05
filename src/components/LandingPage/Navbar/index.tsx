@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Search from "../../LandingPage/Search";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
   const [menu, openMenu] = useState(false);
+  const [url, setUrl] = useState("");
+  const { push } = useRouter();
+
+  useEffect(() => {
+    setUrl(localStorage.getItem("url"));
+  }, []);
 
   function handleClickResponsiveButton() {
     if (menu) {
@@ -11,6 +18,14 @@ const Navbar = () => {
       return "flex md:flex-row xs:flex-col items-center xs:hidden";
     }
   }
+
+  const handleGoToLastPage = () => {
+    // pega valor da url do local storage e redireciona para ela
+    const url = localStorage.getItem("url").split("/");
+    const lastPage = url[url.length - 1];
+    const page = url[url.length - 2];
+    push(page + "/" + lastPage);
+  };
 
   return (
     <>
@@ -22,23 +37,31 @@ const Navbar = () => {
                 <Search />
               </div>
               <a href="#" className="hidden md:block">
-              <img
-                style={{ minWidth: "100px" }}
-                className="bg-cover w-32 xs:w-36 min-w-0"
-                src="./logo.svg"
-                alt="if(play)"
-              />
-            </a>
+                <img
+                  style={{ minWidth: "100px" }}
+                  className="bg-cover w-32 xs:w-36 min-w-0"
+                  src="./logo.svg"
+                  alt="if(play)"
+                />
+              </a>
             </li>
             <li className="2xl:px-8 xs:pb-5 text-p-yellow-light">
               <a href="#">Inicio</a>
             </li>
             <li className="2xl:px-8 xs:pb-5 hover:text-p-yellow-light">
-              <a href="#">Categorias</a>
+              <a href="#category">Categorias</a>
             </li>
-            <li className="2xl:px-8 hover:text-p-yellow-light">
-              <a href="#">Continuar Assistindo</a>
-            </li>
+            {url !== null && (
+              <li className="2xl:px-8 hover:text-p-yellow-light">
+                <button
+                  onClick={() => {
+                    handleGoToLastPage();
+                  }}
+                >
+                  Continuar Assistindo
+                </button>
+              </li>
+            )}
           </div>
           <div className="flex flex-row-reverse justify-between xs:w-full w-max">
             <button
@@ -74,7 +97,7 @@ const Navbar = () => {
               />
             </a>
             <div className="hidden md:block">
-                <Search />
+              <Search />
             </div>
           </div>
         </ul>

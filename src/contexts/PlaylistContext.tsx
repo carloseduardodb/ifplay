@@ -109,7 +109,7 @@ export function PlaylistProvider({ children }: PlaylistContextProviderProps) {
   const router = useRouter();
 
   useEffect(() => {
-    if (router.pathname.includes("playlists/")) {
+    if (router.pathname.includes("playlists/") && router.query.selectPlaylist) {
       api
         .get(`/playlist/${router.query.selectPlaylist}`)
         .then(({ data }: AxiosResponse) => {

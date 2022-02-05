@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaPlay } from "react-icons/fa";
 import { FiArrowRight } from "react-icons/fi";
+import { useRouter } from "next/router";
 
 type VideosProps = {
   created_at: Date;
@@ -95,6 +96,7 @@ interface PageInfo {
 const Video: React.FC<videoProperties> = ({ effects = true, data }) => {
   const [description, isDescription] = useState(false);
   const [videoProps, setVideoProps] = useState<Root>();
+  const { push } = useRouter();
 
   function handleDescriptionView() {
     isDescription(!description);
@@ -134,8 +136,10 @@ const Video: React.FC<videoProperties> = ({ effects = true, data }) => {
           {videoProps?.items[0].snippet.title}
         </a>
         <a
-          href=""
-          className={`absolute top-1/2 transform -translate-y-1/2 text-yellow-300 ${
+          onClick={() => {
+            push(`/playlists/${data.playlist_id}`);
+          }}
+          className={`absolute top-1/2 transform -translate-y-1/2 text-yellow-300 cursor-pointer ${
             description ? "opacity-0" : "opacity-100"
           }`}
         >

@@ -53,7 +53,7 @@ export default function CardTable({ color }) {
     api
       .get("/playlists/teams/responses/last")
       .then(({ data }) => {
-        setResponses(data[0]);
+        setResponses(data.rows);
       })
       .catch((err) => {
         toast.error(err);

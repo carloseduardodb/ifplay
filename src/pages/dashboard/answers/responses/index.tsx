@@ -22,7 +22,7 @@ const index = () => {
           `/playlists/${router.query.playlistId}/teams/${router.query.teamId}/responses`
         )
         .then(({ data }) => {
-          setResponses(data[0]);
+          setResponses(data.rows);
         })
         .catch((error) => {
           toast.error(error);

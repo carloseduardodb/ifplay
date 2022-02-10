@@ -34,6 +34,10 @@ export default function CreateAnswerModal() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!question1Rp || !question2Rp || !question3Rp || !question4Rp) {
+      toast.warn("Adicione uma resposta!");
+      return;
+    }
     setOpen(false);
     api
       .post("teacher/questions", {
@@ -51,6 +55,10 @@ export default function CreateAnswerModal() {
         },
       })
       .then(() => {
+        setQuestion1Rp(false);
+        setQuestion2Rp(false);
+        setQuestion3Rp(false);
+        setQuestion4Rp(false);
         toast.success("Questão criada com sucesso");
         setDispatch(!dispatch);
       })
@@ -163,7 +171,10 @@ export default function CreateAnswerModal() {
                                 placeholder="Resposta"
                               />
                               <input
-                                onClick={() => setQuestion1Rp(!question1Rp)}
+                                onClick={() => {
+                                  setQuestion1Rp(!question1Rp);
+                                  alert(question1Rp);
+                                }}
                                 type="checkbox"
                                 className="ml-2"
                               />

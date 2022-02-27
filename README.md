@@ -2,11 +2,11 @@
   <img src="./public/logo.svg">
 </p>
 
-## IFPLAY - API (Backend)
+## IFPLAY - Client (Frontend)
 
 ## Em produção
 
-IFPLAY é uma api usada para a criação de formulários em playlists de videos em um sistema multitenancy.
+IFPLAY é o frontend de uma api usada para a criação de formulários em playlists de videos em um sistema multi tenancy.
 
 <br />
 
